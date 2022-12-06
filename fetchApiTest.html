@@ -9,13 +9,21 @@
 <body>
     <button id="getText">get text</button>
     <button id="getUsers">get Users</button>
-    <button id="getTestApi">get Test api data</button>  
+    <button id="getCards">get Cards</button> 
+    <hr> 
      <div id="output"></div>
+     <form >
+        <div>
+            <input type="text" id="playername" placeholder="insert player name">
+        </div>
+        <input type="submit"  value="submit" id="addPlayer">
+     </form>
+     
     <script>
         document.getElementById('getText').addEventListener('click',getText);
         document.getElementById('getUsers').addEventListener('click',getUsers);
-        document.getElementById('getTestApi').addEventListener('click',getTestApi);
-
+        document.getElementById('getCards').addEventListener('click',getCards);
+        document.getElementById('addPlayer').addEventListener('click',addPlayer);
         function getText(){
             // fetch('test.txt')
             // .then(function(response){
@@ -61,15 +69,15 @@
 
         }
 
-        function getTestApi(){
-            // fetch('test.txt')
-            // .then(function(response){
-            //     return response.text();
-            // })
-            // .then(function(data){ 
-            //     console.log(data);
-            //  }
-            // )
+        function getCards(){
+            fetch('test.txt')
+            .then(function(response){
+                return response.text();
+            })
+            .then(function(data){ 
+                console.log(data);
+             }
+            )
 
             fetch('http://localhost/PHP_REST_API/api/card/read.php')
             .then((res) => res.json())
@@ -90,6 +98,27 @@
             })
             .catch((err) => {console.log(err)})
 
+        }
+
+        function addPlayer(e){
+            e.preventDefault();
+
+            let name = document.getElementById('playername').value;
+            if(name.length != 0 && name != ""){
+                fetch('http://localhost/PHP_REST_API/api/player/add_new_player.php', {
+                method:'POST',
+                headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-type':'application/json'
+                },
+                body:JSON.stringify({name:name})
+                })
+                .then((res) => res.json())
+                .then((data) => console.log(data))
+            }else{
+                alert('provide with name')
+            }
+            
         }
     </script>
 </body>

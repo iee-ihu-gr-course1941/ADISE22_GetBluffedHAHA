@@ -71,6 +71,29 @@
 
         }
 
+        public function get_player_with_name(){
+            $query = 'SELECT  t.id,t.name, t.created 
+                        FROM ' . $this->table .
+                         ' t  where t.name = ? LIMIT 0,1';
+
+            //Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Bind id
+            $stmt -> bindParam(1,$this->name);
+
+            //Execute query
+            $stmt->execute();
+
+            $row = $stmt-> fetch(PDO::FETCH_ASSOC);
+
+            //Set properties
+            $this->id = $row['id'];
+            $this->name = $row['name'];
+            $this->created = $row['created'];
+
+        }
+
         public function add_new_player(){
             $query = 'INSERT INTO ' 
             . $this->table 
@@ -100,6 +123,34 @@
             return false;
 
         }
+
+        public function update_player() {
+            // Create query
+            $query = 'UPDATE ' . $this->table . '
+                                  SET name = :name
+                                  WHERE id = :id';
+  
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+  
+            // Clean data
+            $this->name = htmlspecialchars(strip_tags($this->name));
+            $this->id = htmlspecialchars(strip_tags($this->id));
+  
+            //Bind params
+            $stmt -> bindParam(':name',$this->name);
+            $stmt -> bindParam(':id',$this->id);
+  
+            // Execute query
+            if($stmt->execute()) {
+              return true;
+            }
+  
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+  
+            return false;
+      }
 
         
         
