@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch api results</title>
-</head>
-<body>
-    <button id="getText">get text</button>
-    <button id="getUsers">get Users</button>
-    <button id="getCards">get Cards</button> 
-    <hr> 
-     <div id="output"></div>
-     <form >
-        <div>
-            <input type="text" id="playername" placeholder="insert player name">
-        </div>
-        <input type="submit"  value="submit" id="addPlayer">
-     </form>
-     
-    <script>
         document.getElementById('getText').addEventListener('click',getText);
         document.getElementById('getUsers').addEventListener('click',getUsers);
         document.getElementById('getCards').addEventListener('click',getCards);
         document.getElementById('addPlayer').addEventListener('click',addPlayer);
+        document.getElementById('getplayername').addEventListener('click',GetPlayerWithName);
+        
         function getText(){
             // fetch('test.txt')
             // .then(function(response){
@@ -34,7 +14,7 @@
             //  }
             // )
 
-            fetch('test.txt')
+            fetch('../test.txt')
             .then((res) => res.text())
             .then((data) => {document.getElementById('output').innerHTML = data})
             .catch((err) => {console.log(err)})
@@ -51,7 +31,7 @@
             //  }
             // )
 
-            fetch('Users.json')
+            fetch('../Users.json')
             .then((res) => res.json())
             .then((data) => {
                 let output = '<h2>Users</h2>';
@@ -99,7 +79,37 @@
             .catch((err) => {console.log(err)})
 
         }
+        function GetPlayerWithName(){
+            
 
+            let name = document.getElementById('name').value;
+            const url = ('http://localhost/PHP_REST_API/api/player/get_player_with_name.php?' + new URLSearchParams({ name: name }).toString());
+            console.log(url);
+            if(name.length != 0 && name != ""){
+                fetch(url)
+                .then((res) => res.json())
+                .then((data) => {
+                let output = '<h2>player with name '+name+'</h2>';
+                console.log(data.id);
+                data =  JSON.stringify(data);
+                data = JSON.parse(data);
+                output += `
+                 <div>
+                    <h2>${data.id}</h2>
+                    <h2>${data.name}</h2>
+                    <h2>${data.created}</h2>
+                </div>`;  
+                // data.forEach(function(player){
+                 
+                // });
+                document.getElementById('outputplayer').innerHTML = output;
+            })
+            .catch((err) => {console.log(err)})
+            }else{
+                alert('provide with name')
+            }
+            
+        }
         function addPlayer(e){
             e.preventDefault();
 
@@ -120,8 +130,3 @@
             }
             
         }
-    </script>
-</body>
-
-
-</html>
