@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "27cd4dde-fde4-4812-a86f-9b5dad4545f6",
+		"name": "Bluff_ADISE2022",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cards",
+			"item": [
+				{
+					"name": "Get cards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/PHP_REST_API/api/card/read.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"PHP_REST_API",
+								"api",
+								"card",
+								"read.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single card with id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/PHP_REST_API/api/card/read_single_card.php?id=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"PHP_REST_API",
+								"api",
+								"card",
+								"read_single_card.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Players",
+			"item": [
+				{
+					"name": "Get players",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/PHP_REST_API/api/player/read.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"PHP_REST_API",
+								"api",
+								"player",
+								"read.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single player with name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/PHP_REST_API/api/player/get_player_with_name.php?name=alex",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"PHP_REST_API",
+								"api",
+								"player",
+								"get_player_with_name.php"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "alex"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single player",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/PHP_REST_API/api/player/read_single_player.php?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"PHP_REST_API",
+								"api",
+								"player",
+								"read_single_player.php"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new player",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"kal\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/PHP_REST_API/api/player/add_new_player.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"PHP_REST_API",
+								"api",
+								"player",
+								"add_new_player.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update player",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"alexandros allakse\",\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/PHP_REST_API/api/player/update_player.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"PHP_REST_API",
+								"api",
+								"player",
+								"update_player.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
