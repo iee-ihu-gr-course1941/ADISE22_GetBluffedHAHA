@@ -4,7 +4,8 @@ class Database{
     private $host = 'localhost';
     private $db = 'bluff_db';
     private $user = 'root';
-    private $pass = 'adminalex';
+    private $pass = 'root'; //mikes password
+ // private $pass = 'adminalex';  
     private $conn;
     
 
