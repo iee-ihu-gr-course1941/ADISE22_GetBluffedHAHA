@@ -8,6 +8,7 @@ php_value error_log /home/student/it/2018/it185186/PHP_errors.log
 # Deprecated apache 2.2 syntax:
 # Order Allow,Deny
 # Allow from all
+# AllowOverride All
 # Apache > 2.4 requires:
 Require all granted
 </Limit>
