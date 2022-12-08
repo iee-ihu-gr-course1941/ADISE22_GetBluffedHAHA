@@ -14,7 +14,7 @@ class Database{
         $this->conn = null;
 
         try{
-            $mysqli = new mysqli($this->host, $this->user,$this->pass, $this->db,null,'/home/student/it/2018/it185186/mysql/run/mysql.sock');
+            $this->conn = new mysqli($this->host, $this->user,$this->pass, $this->db,null,'/home/student/it/2018/it185186/mysql/run/mysql.sock');
             // $this->conn = new PDO('mysql:host='.$this->dsn.';dbname='.$this->db,
             //  $this->user, $this->pass);  
             //  $this->conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);  
