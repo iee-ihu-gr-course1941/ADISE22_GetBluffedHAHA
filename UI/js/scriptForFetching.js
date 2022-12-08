@@ -58,8 +58,9 @@
                 console.log(data);
              }
             )
-
-            fetch('http://localhost/PHP_REST_API/api/card/read.php')
+            const url = 'https://users.it.teithe.gr/PHP_REST_API/api/player/add_new_player.php';
+            // const url = 'http://localhost/PHP_REST_API/api/card/read.php';
+            fetch(url)
             .then((res) => res.json())
             .then((data) => {
                 let output = '<h2>cards</h2>';
