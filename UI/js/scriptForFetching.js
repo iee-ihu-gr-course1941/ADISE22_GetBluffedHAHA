@@ -64,7 +64,7 @@
             .then((res) => res.json())
             .then((data) => {
                 let output = '<h2>cards</h2>';
-                 data =  JSON.stringify(data.data);
+                 data =  JSON.stringify(data);
                 data = JSON.parse(data);
                 console.log(data);
                 data.forEach(function(card){
