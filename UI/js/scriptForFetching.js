@@ -58,7 +58,7 @@
                 console.log(data);
              }
             )
-            const url = 'https://users.iee.ihu.gr/~it185186/ADISE22_GetBluffedHAHA/PHP_REST_API/api/card/read.php';
+            const url = 'PHP_REST_API/api/card/read.php';
             // const url = 'http://localhost/PHP_REST_API/api/card/read.php';
             fetch(url)
             .then((res) => res.json())
