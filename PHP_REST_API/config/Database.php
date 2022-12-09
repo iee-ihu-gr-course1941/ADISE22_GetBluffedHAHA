@@ -2,7 +2,7 @@
 class Database{
     //DB parameters
     // private $host = 'localhost';
-    private $host = 'users.iee.ihu.gr';
+    private $host = '';
     private $db = 'bluff_db';
     private $user = 'root';
     // private $pass = 'root'; //mikes password
