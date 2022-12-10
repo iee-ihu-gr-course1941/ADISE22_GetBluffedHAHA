@@ -16,7 +16,7 @@ class Database{
 
         try{
             if(gethostname()=='users.iee.ihu.gr') {
-            $this->conn = new PDO($this->host,$this->user, $this->pass,null,$this->db,'/home/student/it/2018/it185186/mysql/run/mysql.sock');  
+            $this->conn = new PDO('mysql:unix_socket=/home/student/it/2018/it185186/mysql/run/mysql.sock;dbname=bluff_db',$this->user,$this->pass);  
             // $this->conn = new mysqli($this->host,$this->user, $this->pass,$this->db,null,'/home/student/it/2018/it185186/mysql/run/mysql.sock');
              } //  $this->conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);  
         }catch(PDOException $e){
