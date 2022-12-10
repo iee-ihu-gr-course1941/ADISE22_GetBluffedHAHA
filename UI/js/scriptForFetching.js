@@ -58,14 +58,9 @@
                 console.log(data);
              }
             )
-<<<<<<< HEAD
-            const url = 'PHP_REST_API/api/card/read.php';
+            const url = 'https://users.iee.ihu.gr/~it185186/ADISE22_GetBluffedHAHA/PHP_REST_API/api/card/read.php';
             // const url = 'http://localhost/PHP_REST_API/api/card/read.php';
             fetch(url)
-=======
-
-            fetch('http://localhost/PHP_REST_API/api/card/read.php')
->>>>>>> main
             .then((res) => res.json())
             .then((data) => {
                 let output = '<h2>cards</h2>';
@@ -73,12 +68,23 @@
                 data = JSON.parse(data);
                 console.log(data);
                 data.forEach(function(card){
-                 output += `
-                 <div>
-                    <h2>${card.id}</h2>
-                    <h2>${card.colour}</h2>
-                    <h2>${card.number}</h2>
-                </div>`;  
+                //  output += `
+                //  <div>
+                //     <h2>${card.id}</h2>
+                //     <h2>${card.colour}</h2>
+                //     <h2>${card.number}</h2>
+                // </div>`;
+                if(card.number != 'JOKER1' && card.number !='JOKER2') {
+                    output += `
+                    <div class="card" 
+                    data-suit=${card.color} 
+                    data-value=${card.number}></div>`; 
+                }else{
+                    output += `
+                    <div class="card"  
+                    data-value=${card.number}></div>`; 
+                }
+                
                 });
                 document.getElementById('output').innerHTML = output;
             })
