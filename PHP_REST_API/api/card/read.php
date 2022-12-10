@@ -2,7 +2,7 @@
  header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
-include_once '../../config/UsersConnect.php';
+include_once '../../config/Database.php';
 include_once '../../models/Card.php';
 // instantiate database
  $db = new Database;
