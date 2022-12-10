@@ -75,6 +75,7 @@
                 //     <h2>${card.number}</h2>
                 // </div>`;
                 if(card.number != 'JOKER1' && card.number !='JOKER2') {
+                    var cardcolour = card.colour.toLowerCase();
                     output += `
                     <div class="card" 
                     data-suit=${card.colour} 
