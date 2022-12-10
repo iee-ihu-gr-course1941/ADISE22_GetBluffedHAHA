@@ -58,9 +58,14 @@
                 console.log(data);
              }
             )
+<<<<<<< HEAD
             const url = 'PHP_REST_API/api/card/read.php';
             // const url = 'http://localhost/PHP_REST_API/api/card/read.php';
             fetch(url)
+=======
+
+            fetch('http://localhost/PHP_REST_API/api/card/read.php')
+>>>>>>> main
             .then((res) => res.json())
             .then((data) => {
                 let output = '<h2>cards</h2>';
@@ -115,10 +120,8 @@
             e.preventDefault();
 
             let name = document.getElementById('playername').value;
-            const url = 'https://users.it.teithe.gr/PHP_REST_API/api/player/add_new_player.php';
-            // const url = 'http://localhost/PHP_REST_API/api/player/add_new_player.php';
             if(name.length != 0 && name != ""){
-                fetch(url, {
+                fetch('http://localhost/PHP_REST_API/api/player/add_new_player.php', {
                 method:'POST',
                 headers: {
                 'Accept': 'application/json, text/plain, */*',
