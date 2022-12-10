@@ -77,7 +77,7 @@
                 if(card.number != 'JOKER1' && card.number !='JOKER2') {
                     output += `
                     <div class="card" 
-                    data-suit=${card.color} 
+                    data-suit=${card.colour} 
                     data-value=${card.number}></div>`; 
                 }else{
                     output += `
