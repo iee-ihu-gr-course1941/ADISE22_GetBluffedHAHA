@@ -1,6 +1,6 @@
 <?php
 $host='localhost';
-$db = 'chess';
+$db = 'bluff_db';
 
 $user='root';
 $pass='thisismydatabasepass';
