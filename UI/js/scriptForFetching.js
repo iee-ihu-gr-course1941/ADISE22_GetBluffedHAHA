@@ -78,7 +78,7 @@
                     var cardcolour = card.colour.toLowerCase();
                     output += `
                     <div class="card" 
-                    data-suit=${card.colour} 
+                    data-suit=`+cardcolour+`
                     data-value=${card.number}></div>`; 
                 }else{
                     output += `
