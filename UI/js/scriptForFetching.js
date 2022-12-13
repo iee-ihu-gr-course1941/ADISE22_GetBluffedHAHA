@@ -58,8 +58,8 @@
                 console.log(data);
              }
             )
-            const url = 'https://users.iee.ihu.gr/~it185186/ADISE22_GetBluffedHAHA/PHP_REST_API/api/card/read.php';
-            // const url = 'http://localhost/PHP_REST_API/api/card/read.php';
+            // const url = 'https://users.iee.ihu.gr/~it185186/ADISE22_GetBluffedHAHA/PHP_REST_API/api/card/read.php';
+            const url = 'http://localhost/PHP_REST_API/api/card/read.php';
             fetch(url)
             .then((res) => res.json())
             .then((data) => {
@@ -76,22 +76,70 @@
                 // </div>`;
                 if(card.number != 'JOKER1' && card.number !='JOKER2') {
                     card.colour = card.colour.toLowerCase();
-                    output += `
-                    <div class="card" 
-                    data-suit=${card.colour} 
-                    data-value=${card.number}></div>`; 
+                    card.number = card.number.charAt(0);
+                    const node = document.createElement("div");
+                    node.setAttribute('class', 'card')
+                    node.setAttribute('data-suit', card.colour)
+                    node.setAttribute('data-value',card.number)
+                    // cardDiv.data-value = ${card.number};
+                    const box = document.getElementById('output')
+                    box.appendChild(node);
+                    console.log(box.childNodes)
                 }else{
-                    output += `
-                    <div class="card"  
-                    data-value=${card.number}></div>`; 
+                    const node = document.createElement("div");
+                    node.setAttribute('class', 'card')
+                    node.setAttribute('data-value','Joker')
+                    const box = document.getElementById('output')
+                    box.appendChild(node);
+                    console.log(box.childNodes)
                 }
                 
                 });
-                document.getElementById('output').innerHTML = output;
+                addStyles()
+                // document.getElementById('output').innerHTML = output;
             })
             .catch((err) => {console.log(err)})
 
         }
+
+function addStyles(){
+    const cards = document.querySelectorAll(".card")
+    cards.forEach(addCardElements)
+}
+
+
+
+
+function addCardElements(card) {
+  const value = card.dataset.value
+  // const suit = card.dataset.suit
+
+  const valueAsNumber = parseInt(value)
+  if (isNaN(valueAsNumber)) {
+    card.append(createPip())
+  } else {
+    for (let i = 0; i < valueAsNumber; i++) {
+      card.append(createPip())
+    }
+  }
+
+  card.append(createCornerNumber("top", value))
+  card.append(createCornerNumber("bottom", value))
+}
+
+function createCornerNumber(position, value) {
+  const corner = document.createElement("div")
+  corner.textContent = value
+  corner.classList.add("corner-number")
+  corner.classList.add(position)
+  return corner
+}
+
+function createPip() {
+  const pip = document.createElement("div")
+  pip.classList.add("pip")
+  return pip
+}
         function GetPlayerWithName(){
             
 
@@ -143,3 +191,5 @@
             }
             
         }
+
+        console.log("fetching")

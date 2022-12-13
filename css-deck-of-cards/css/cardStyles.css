@@ -31,7 +31,7 @@ body {
 }
 
 [data-suit="spade"].card,
-[data-suit="clover"].card {
+[data-suit="club"].card {
   color: black;
 }
 
@@ -56,7 +56,7 @@ body {
   background-image: url("../images/spade.svg");
 }
 
-[data-suit="clover"] .pip {
+[data-suit="club"] .pip {
   background-image: url("../images/club.svg");
 }
 
@@ -95,7 +95,7 @@ body {
   content: url("../images/spade.svg");
 }
 
-[data-suit="clover"] .corner-number::after {
+[data-suit="club"] .corner-number::after {
   content: url("../images/club.svg");
 }
 
@@ -108,7 +108,7 @@ body {
   background-image: url("../images/jack-red.svg");
 }
 [data-value="J"][data-suit="spade"] .pip,
-[data-value="J"][data-suit="clover"] .pip {
+[data-value="J"][data-suit="club"] .pip {
   background-image: url("../images/jack-black.svg");
 }
 
@@ -117,7 +117,7 @@ body {
   background-image: url("../images/queen-red.svg");
 }
 [data-value="Q"][data-suit="spade"] .pip,
-[data-value="Q"][data-suit="clover"] .pip {
+[data-value="Q"][data-suit="club"] .pip {
   background-image: url("../images/queen-black.svg");
 }
 
