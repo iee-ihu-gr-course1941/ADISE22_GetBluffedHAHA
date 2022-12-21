@@ -1,7 +1,7 @@
 <?php
 class Database{
     //DB parameters
-    private $host = 'localhost';
+    private $host = 'localhost:4333';
     private $db = 'bluff_db';
     private $user = 'root';
     private $pass = ''; //pavlidis password

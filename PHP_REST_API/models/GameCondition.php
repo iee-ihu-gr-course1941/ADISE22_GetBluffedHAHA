@@ -35,41 +35,95 @@
          }
  
          public function getResult(){
-             return $this->Result;
+             return $this->result;
          }
 
-         //CREATE NEW GAME
-         public function createGame(){
-            $query = 'INSERT INTO ' . $this->table . '(0,NULL,NULL)';
+         //SETTERS
+         public function setId($id){
+             $this->id = $id;
+        }
 
-            //Prepare Statement
+        public function setPlayerTurn($p_turn){
+            $this->p_turn = $p_turn;
+        }
+        
+        public function setGameStatus($status){
+            $this->status = $status;
+        }
+        
+        public function setLastChange($last_change){
+            $this->last_change = $last_change;
+        }
+
+        public function setResult($result){
+            $this->result = $result;
+        }
+
+        public function createGame(){
+            $query = 'INSERT INTO ' 
+            . $this->table 
+            .' SET 
+            p_turn =:p_turn,
+            status =:status,
+            result =:result,
+            last_change =now()';
+
+            //Prepare statement
             $stmt = $this->conn->prepare($query);
 
-            //Execute query
-            $stmt->execute();
-            
-            $row = $stmt->fetch(PDO::FETCH_ASSOC); 
+            //clean data
+            $this->id = htmlspecialchars(strip_tags($this->id));
+            $this->p_turn= htmlspecialchars(strip_tags($this->p_turn));
+            $this->status= htmlspecialchars(strip_tags($this->status));
+            $this->last_change = htmlspecialchars(strip_tags($this->last_change));
+            $this->result = htmlspecialchars(strip_tags($this->result));
 
-            echo json_encode(
-                array('message' => 'game created with id' . $row['id']));
+            //Bind params
+            $stmt -> bindParam(':p_turn',$this->p_turn);
+            $stmt -> bindParam(':status',$this->status);
+            $stmt -> bindParam(':result',$this->result);
 
-         }
+            if($stmt->execute()){
+                return true;
+            }
+
+            //print error if something went wrong
+            printf("Error: %s.\n",$stmt->error);
+
+            return false;
+
+        }
 
          //CHANGE GAME STATUS
-         public function changeStatus($id,$status){
-            $query = 'UPDATE ' . $this->$table . 
-                     'SET status = ? WHERE id = ?';
-
-            //Prepare Statement
+         public function changeStatus(){
+            // Create query
+            $query = 'UPDATE ' . $this->table . '
+                                  SET status = :status,
+                                  last_change = now()
+                                  WHERE id = :id';
+  
+            // Prepare statement
             $stmt = $this->conn->prepare($query);
+  
+            //clean data
+            $this->id = htmlspecialchars(strip_tags($this->id));
+            $this->p_turn= htmlspecialchars(strip_tags($this->p_turn));
+            $this->status= htmlspecialchars(strip_tags($this->status));
+            $this->last_change = htmlspecialchars(strip_tags($this->last_change));
+            $this->result = htmlspecialchars(strip_tags($this->result));
 
-            //Bind Parameters
-            $stmt -> bindParam(1,$status);
-            $stmt -> bindParam(2,$id);
-
-            //Execute query
-            $stmt->execute();
-            
-            $row = $stmt->fetch(PDO::FETCH_ASSOC); 
+            //Bind params
+            $stmt -> bindParam(':id',$this->id);
+            $stmt -> bindParam(':status',$this->status);
+  
+            // Execute query
+            if($stmt->execute()) {
+              return true;
+            }
+  
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+  
+            return false;
          }
     }
