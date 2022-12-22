@@ -1,11 +1,12 @@
 <?php
 class Database{
     //DB parameters
-    private $host = 'localhost:4333';
+    private $host = 'localhost';
     private $db = 'bluff_db';
     private $user = 'root';
-    // private $pass = 'root'; //mikes password
-    private $pass = 'adminalex';  
+    private $pass = ''; //pavlidis password
+    //private $pass = 'root'; //mikes password
+ // private $pass = 'adminalex';   
     private $conn;
     
 
@@ -14,8 +15,8 @@ class Database{
 
         try{
             $this->conn = new PDO('mysql:host='.$this->host.';dbname='.$this->db,
-            $this->user, $this->pass);  
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);  
+             $this->user, $this->pass);  
+             $this->conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);  
         }catch(PDOException $e){
             echo 'connection failed: '.$e->getMessage();      
         }
