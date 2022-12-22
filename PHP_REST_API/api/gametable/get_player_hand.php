@@ -3,7 +3,9 @@
 header('Content-Type: application/json');
 
 include_once '../../config/Database.php';
+// include_once '../../config/DbForUsers.php';
 include_once '../../models/GameTable.php';
+
 // instantiate database
  $db = new Database;
  $db = $db->connect();
@@ -11,11 +13,13 @@ include_once '../../models/GameTable.php';
  // Instantiate card model
  $gameTable = new GameTable($db);
 
+ //Get id
+ $gameTable->setPlayerId(isset($_GET['player_id']) ? $_GET['player_id'] : die());
 
- $result = $gameTable->read_player_hand(isset($_GET['player']));
+ //cards query
+ $result = $gameTable->get_player_hand();
+ //get row count
  $rowcount = $result->rowCount();
-
-
 
  if($rowcount > 0) {
     $card_arr = array();
@@ -31,9 +35,9 @@ include_once '../../models/GameTable.php';
 
         );
         array_push($card_arr['data'], $card_item);
-
-
     }
     echo json_encode($card_arr);
-}
-
+ }else{
+    echo json_encode(
+        array('message' => 'no table found'));
+ }

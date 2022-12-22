@@ -1,5 +1,5 @@
 <?php
-
+ include_once '../../models/Player.php';
      class Card{
         //DB STUFF
         private $conn;
@@ -10,9 +10,13 @@
         private $colour;
         private $number;
 
+        private $player;
+
         public function __construct($db)
         {
             $this->conn = $db;
+            // Instantiate player model
+            $player = new Player($db);
         }
 
         public function getId(){
@@ -30,7 +34,13 @@
         public function getNumber(){
             return $this->number;
         }
+        public function setColour($colour){
+            $this->colour = $colour;
+        }
 
+        public function setNumber($number){
+            $this->number = $number;
+        }
         public function read(){
             $query = 'SELECT  t.colour,t.id, t.number 
                         FROM ' . $this->table . ' t ';

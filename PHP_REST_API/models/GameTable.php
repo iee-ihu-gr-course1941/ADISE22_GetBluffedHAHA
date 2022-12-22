@@ -1,5 +1,5 @@
 <?php
-
+include_once '../../models/Card.php';
     class GameTable{
         //DB STUFF
         private $conn;
@@ -77,24 +77,24 @@
             return $stmt;
         }
 
-        //READ PLAYER HAND
-        public function read_player_hand($player){
-            $query = 'SELECT g.card_id
-                        FROM ' . $this->table . ' g  
-                        WHERE g.player_id = ?';
-
+        //GET PLAYER HAND
+        public function get_player_hand(){
+            $query = 'select c.colour,c.id,c.number
+                        from cards c
+                        join ' . $this->table .' gt on
+                        c.id = gt.card_id
+                        where player_id = ?';
+            
             //Prepare statement
             $stmt = $this->conn->prepare($query);
 
-            //Bind Parameter
-            $stmt -> bindParam(1,$player);
+            //Bind player_id
+            $stmt -> bindParam(1,$this->player_id);
 
             //Execute query
-            $stmt->execute();
+            $stmt -> execute();
 
-            $row = $stmt-> fetch(PDO::FETCH_ASSOC);
-
-           return $stmt;
+            return $stmt;
         }
 
         //READ PLAYER PLAYER HAND SIZE

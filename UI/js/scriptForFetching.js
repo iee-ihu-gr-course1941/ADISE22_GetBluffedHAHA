@@ -2,7 +2,7 @@
 // document.getElementById('getUsers').addEventListener('click',getUsers);
 document.getElementById('getCards').addEventListener('click',getCards);
 // document.getElementById('addPlayer').addEventListener('click',addPlayer);
-document.getElementById('getplayername').addEventListener('click',GetPlayerWithName);
+// document.getElementById('getplayername').addEventListener('click',GetPlayerWithName);
         
         // function getText(){
         //     // fetch('test.txt')
@@ -50,8 +50,11 @@ document.getElementById('getplayername').addEventListener('click',GetPlayerWithN
 // }
 
 function getCards(){
+    let player_id = document.getElementById('player_id').value;
     // const url = 'https://users.iee.ihu.gr/~it185186/ADISE22_GetBluffedHAHA/PHP_REST_API/api/card/read.php';
-    const url = 'http://localhost/PHP_REST_API/api/card/read.php';
+    // const url = 'http://localhost/PHP_REST_API/api/card/read.php';
+    const url = ('http://localhost/PHP_REST_API/api/gametable/get_player_hand.php?' + new URLSearchParams({player_id}).toString());
+    console.log(url);
     fetch(url)
     .then((res) => res.json())
     .then((data) => {
