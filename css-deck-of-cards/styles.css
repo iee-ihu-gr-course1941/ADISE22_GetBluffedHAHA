@@ -87,6 +87,29 @@ body {
   width: .5em;
 }
 
+.clicked{
+
+  --width: 5em;
+  --height: calc(var(--width) * 1.4);
+  width: var(--width);
+  height: var(--height);
+  background-color: white;
+  
+  border-radius: .25em;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  align-items: center;
+  position: relative;
+
+
+  border: 1px;
+  border-style:solid;
+  border-color:#ebfc00;
+  padding:10px;  
+}
+
 [data-suit="heart"] .corner-number::after {
   content: url("imgs/heart.svg");
 }
@@ -139,6 +162,7 @@ body {
   grid-row-end: span 6;
   grid-column-end: span 3;
 }
+
 
 [data-value="2"] .pip:first-child {
   grid-row-start: 1;
