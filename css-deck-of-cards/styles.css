@@ -86,6 +86,24 @@ body {
   display: block;
   width: .5em;
 }
+.back_card{
+  --width: 5em;
+  --height: calc(var(--width) * 1.4);
+  width: var(--width);
+  height: var(--height);
+  background-color: white;
+  border: 1px solid black;
+  border-radius: .25em;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  align-items: center;
+  position: relative;
+  background-image: url("imgs/Card_back_05a.svg");
+  background-repeat: no-repeat;
+  background-size: 80px 115px;
+}
 
 .clicked{
 
@@ -109,6 +127,7 @@ body {
   border-color:#ebfc00;
   padding:10px;  
 }
+
 
 [data-suit="heart"] .corner-number::after {
   content: url("imgs/heart.svg");
