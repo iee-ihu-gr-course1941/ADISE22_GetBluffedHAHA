@@ -3,12 +3,29 @@
 }
 
 body {
-  background-color: #DDD;
+  background-color: rgb(165, 143, 143);
   display: flex;
   flex-wrap: wrap;
   gap: .5em;
+  
+  
 }
-
+.card-stack{
+  --width: 5em;
+  --height: calc(var(--width) * 1.4);
+  width: var(--width);
+  height: var(--height);
+  background-color: white;
+  border: 1px solid black;
+  border-radius: .25em;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  align-items: center;
+  position: relative;
+ 
+}
 .card {
   --width: 5em;
   --height: calc(var(--width) * 1.4);
@@ -23,6 +40,7 @@ body {
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
   position: relative;
+  cursor: grab;
 }
 
 [data-suit="heart"].card,
@@ -103,6 +121,7 @@ body {
   background-image: url("imgs/Card_back_05a.svg");
   background-repeat: no-repeat;
   background-size: 80px 115px;
+  cursor: not-allowed;
 }
 
 .clicked{
