@@ -16,7 +16,7 @@ body {
   width: var(--width);
   height: var(--height);
   background-color: white;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: .25em;
   padding: 1em;
   display: grid;
@@ -24,6 +24,8 @@ body {
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
   position: relative;
+  bottom: 100px;
+  left:800px;
  
 }
 .card {
@@ -39,8 +41,31 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
+  bottom:-750px;
   position: relative;
+  left:30px;
   cursor: grab;
+}
+
+.back_card{
+  --width: 5em;
+  --height: calc(var(--width) * 1.4);
+  width: var(--width);
+  height: var(--height);
+  background-color: white;
+  border: 1px solid black;
+  border-radius: .25em;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  align-items: center;
+  position: relative;
+  
+  background-image: url("imgs/Card_back_05a.svg");
+  background-repeat: no-repeat;
+  background-size: 80px 115px;
+  cursor: not-allowed;
 }
 
 [data-suit="heart"].card,
@@ -104,25 +129,7 @@ body {
   display: block;
   width: .5em;
 }
-.back_card{
-  --width: 5em;
-  --height: calc(var(--width) * 1.4);
-  width: var(--width);
-  height: var(--height);
-  background-color: white;
-  border: 1px solid black;
-  border-radius: .25em;
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  align-items: center;
-  position: relative;
-  background-image: url("imgs/Card_back_05a.svg");
-  background-repeat: no-repeat;
-  background-size: 80px 115px;
-  cursor: not-allowed;
-}
+
 
 .clicked{
 
@@ -139,6 +146,8 @@ body {
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
   position: relative;
+  bottom:-100px;
+  left:30px;
 
 
   border: 1px;
