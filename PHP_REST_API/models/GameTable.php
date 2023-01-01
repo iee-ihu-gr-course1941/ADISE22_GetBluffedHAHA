@@ -7,7 +7,7 @@ include_once '../../models/Card.php';
 
         private $id;
         private $player_id;
-        private $game_condition_id;
+        private $game_condition_id = 9;
         private $card_id;
         private $burned;
         private $ontable;
@@ -154,6 +154,73 @@ include_once '../../models/Card.php';
             printf("Error: %s.\n",$stmt->error);
 
             return false;
+        }
+
+        public function initializeCards(){
+
+            //SELECT CARD LIST IN RANDOM ORDER
+            $query = 'SELECT * FROM cards ORDER BY RAND()';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            $randomCards = $stmt-> fetch(PDO::FETCH_ASSOC);
+            
+            //INSERT RESULT IN ARRAY
+            //$cardArray = mysql_fetch_array($randomCards);
+            
+
+            //SELECT PLAYERS IN GAME
+            $query = 'SELECT * FROM players WHERE game_condition_id = 9';
+            //$stmt -> bindParam(1,$this->game_condition_id);
+            $stmt->execute();
+ 
+            $players_ingame = $stmt-> fetch(PDO::FETCH_ASSOC);
+
+            //DEBUG 
+            $i = 1;
+            echo json_encode($i);
+
+            //WHILE RANDOM CARD ARRAY HAS CARDS
+            while (count($randomCards)!==0){
+
+                //LOOP FOR ALL PLAYERS
+                foreach($players_ingame as $value){
+
+                    echo json_encode($value . "<br>");
+
+                    //DEBUG 
+                    echo json_encode($i);
+                    $i++;
+
+                    if(count($randomCards)==0)
+                        break;
+
+/*
+                    //INSERT LAST CARD IN RANDOM CARD ARRAY TO PLAYER HAND IN ORDER
+                    $query = 'INSERT INTO game_table (player_id,game_condition_id,card_id,burned,ontable)
+                              VALUES (?,?,?,0,0)';
+                    $stmt = $this->conn->prepare($query);
+                    
+                    $stmt -> bindParam(1,$player[2]);
+                    $stmt -> bindParam(2,$this->game_condition_id);
+                    //$stmt -> bindParam(2,$this->getGameConditionId());
+                    //LAST CARD IN RANDOM ARRAY 
+                    $var = end($randomCards);
+                    $stmt -> bindParam(3,$var);
+
+                    if($stmt->execute()){
+                        return true;
+                    }
+                    
+                    //REMOVE LAST VALUE FROM RANDOM CARD ARRAY
+                    array_pop($randomCards);
+*/                    
+                }
+
+            }
+
+
+            
+            
         }
 
 

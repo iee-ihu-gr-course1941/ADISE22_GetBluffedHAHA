@@ -7,6 +7,7 @@
 
         private $id;
         private $name;
+        private $game_condition_id;
         private $created;
 
         public function __construct($db)
@@ -31,12 +32,20 @@
             $this->name = $name;
         }
 
+        public function getGameConditionId(){
+            return $this->game_condition_id;
+        }
+
+        public function setGameConditionId($game_condition_id){
+            $this->game_condition_id = $game_condition_id;
+        }
+
         public function getCreated(){
             return $this->created;
         }
 
         public function read(){
-            $query = 'SELECT  t.id,t.name, t.created
+            $query = 'SELECT  t.id, t.name, t.game_condition_id, t.created
                         FROM ' . $this->table . ' t ';
 
             //Prepare statement
@@ -49,7 +58,7 @@
         }
 
         public function read_single_player(){
-            $query = 'SELECT  t.id,t.name, t.created 
+            $query = 'SELECT  t.id,t.name,t.game_condition_id, t.created 
                         FROM ' . $this->table .
                          ' t  where t.id = ? LIMIT 0,1';
 
@@ -67,12 +76,13 @@
             //Set properties
             $this->id = $row['id'];
             $this->name = $row['name'];
+            $this->game_condition_id = $row['game_condition_id'];
             $this->created = $row['created'];
 
         }
 
         public function get_player_with_name(){
-            $query = 'SELECT  t.id,t.name, t.created 
+            $query = 'SELECT  t.id,t.name,t.game_condition_id, t.created 
                         FROM ' . $this->table .
                          ' t  where t.name = ? LIMIT 0,1';
 
@@ -90,6 +100,7 @@
             //Set properties
             $this->id = $row['id'];
             $this->name = $row['name'];
+            $this->game_condition_id = $row['game_condition_id'];
             $this->created = $row['created'];
 
         }
@@ -106,6 +117,7 @@
             //clean data
             $this->id = htmlspecialchars(strip_tags($this->id));
             $this->name = htmlspecialchars(strip_tags($this->name));
+            $this->game_condition_id = htmlspecialchars(strip_tags($this->game_condition_id));
             $this->created = htmlspecialchars(strip_tags($this->created));
 
             //Bind params
