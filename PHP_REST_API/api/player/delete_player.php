@@ -8,7 +8,8 @@
 
 
 
-    include_once '../../config/Database.php';
+    include_once '../../config/DbForUsers.php';
+    //include_once '../../config/Database.php';
     include_once '../../models/Player.php';
 
    //instantiate db & connect

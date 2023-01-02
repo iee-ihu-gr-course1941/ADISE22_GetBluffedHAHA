@@ -5,7 +5,8 @@
   header('Access-Control-Allow-Methods: PUT');
   header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-  include_once '../../config/Database.php';
+  include_once '../../config/DbForUsers.php';
+  //include_once '../../config/Database.php';
   include_once '../../models/Player.php';
 
   // Instantiate DB & connect

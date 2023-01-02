@@ -4,7 +4,9 @@
     header('Access-Control-Allow-Methods: POST');
     header('Access-Control-Allow-Headers: Content-Type,Access-Control-Allow-Methods,Authorization,X-Requested-With');
 
-    include_once '../../config/Database.php';
+
+    include_once '../../config/DbForUsers.php';
+    //include_once '../../config/Database.php';
     include_once '../../models/GameCondition.php';
 
     // instantiate database
