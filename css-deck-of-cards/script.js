@@ -39,12 +39,14 @@ function createPip() {
 }
 
 
+
 //highlight card by clicking it and remove by clicking it again
 var elements = document.getElementsByClassName("card");
 
 var myFunction = function(){  
  if(this.getAttribute("class") == "card") {
   this.setAttribute("class","clicked");
+  //console.log("clicked me");
 }else{
   var attribute = this.setAttribute("class","card"); 
 }
@@ -54,7 +56,21 @@ for(var i=0;i<elements.length;i++){
       elements[i].addEventListener('click',myFunction, false); 
       elements[i].addEventListener('dragstart',myFunction, false); //drag n drop
       elements[i].addEventListener('dragend',myFunction, false); //drag n drop
+      
             
+}
+
+
+//play cards
+var  clickFun=function(){
+ // if(this.getAttribute("class") == "clicked"){
+  if(this.getAttribute("clicked")){
+
+    this.setAttribute("class","card-in-stack");
+    console.log("clicked me1");
+  }else{
+    console.log("clicked me2");
+  }
 }
 
 
@@ -117,7 +133,7 @@ let items = document.querySelectorAll('.card');
   item.addEventListener('dragenter', handleDragEnter);
   item.addEventListener('dragleave', handleDragLeave);
   item.addEventListener('dragend', handleDragEnd);
-  item.addEventListener('drop', handleDrop);
+  //item.addEventListener('drop', handleDrop);
 });
 });
 //drag n drops ends

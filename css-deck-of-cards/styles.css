@@ -11,11 +11,11 @@ body {
   
 }
 .card-stack{
-  --width: 5em;
+  --width: 7em;
   --height: calc(var(--width) * 1.4);
   width: var(--width);
   height: var(--height);
-  background-color: white;
+  background-color: rgb(13, 59, 16);
   /* border: 1px solid black; */
   border-radius: .25em;
   padding: 1em;
@@ -23,10 +23,53 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
-  position: relative;
-  bottom: 100px;
-  left:800px;
+  position: absolute;
+  bottom: 450px;
+  left:900px;
+
  
+}
+.card-in-stack{
+  --width: 5em;
+  --height: calc(var(--width) * 1.4);
+  width: var(--width);
+  height: var(--height);
+  background-color: white;
+  border: 1px solid black;
+  border-radius: .25em;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  align-items: center;
+  bottom:-300px;
+  position: relative;
+  left:-550px;
+  cursor: not-allowed;
+}
+.clicked{
+
+  --width: 5em;
+  --height: calc(var(--width) * 1.4);
+  width: var(--width);
+  height: var(--height);
+  background-color: white;
+  
+  border-radius: .25em;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  align-items: center;
+  position: relative;
+  bottom:-750px;
+  left:200px;
+
+
+  border: 1px;
+  border-style:solid;
+  border-color:#ebfc00;
+  padding:10px;  
 }
 .card {
   --width: 5em;
@@ -43,7 +86,7 @@ body {
   align-items: center;
   bottom:-750px;
   position: relative;
-  left:30px;
+  left:200px;
   cursor: grab;
 }
 
@@ -131,30 +174,7 @@ body {
 }
 
 
-.clicked{
 
-  --width: 5em;
-  --height: calc(var(--width) * 1.4);
-  width: var(--width);
-  height: var(--height);
-  background-color: white;
-  
-  border-radius: .25em;
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  align-items: center;
-  position: relative;
-  bottom:-100px;
-  left:30px;
-
-
-  border: 1px;
-  border-style:solid;
-  border-color:#ebfc00;
-  padding:10px;  
-}
 
 
 [data-suit="heart"] .corner-number::after {
