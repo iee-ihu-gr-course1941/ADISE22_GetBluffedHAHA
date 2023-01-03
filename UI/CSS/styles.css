@@ -105,7 +105,7 @@ body {
   align-items: center;
   position: relative;
   
-  background-image: url("imgs/Card_back_05a.svg");
+  background-image: url("../images/Card_back_05a.svg");
   background-repeat: no-repeat;
   background-size: 80px 115px;
   cursor: not-allowed;
@@ -131,19 +131,19 @@ body {
 }
 
 [data-suit="heart"] .pip {
-  background-image: url("imgs/heart.svg");
+  background-image: url("../images/heart.svg");
 }
 
 [data-suit="diamond"] .pip {
-  background-image: url("imgs/diamond.svg");
+  background-image: url("../images/diamond.svg");
 }
 
 [data-suit="spade"] .pip {
-  background-image: url("imgs/spade.svg");
+  background-image: url("../images/spade.svg");
 }
 
 [data-suit="club"] .pip {
-  background-image: url("imgs/club.svg");
+  background-image: url("../images/club.svg");
 }
 
 .corner-number {
@@ -178,45 +178,45 @@ body {
 
 
 [data-suit="heart"] .corner-number::after {
-  content: url("imgs/heart.svg");
+  content: url("../images/heart.svg");
 }
 
 [data-suit="spade"] .corner-number::after {
-  content: url("imgs/spade.svg");
+  content: url("../images/spade.svg");
 }
 
 [data-suit="club"] .corner-number::after {
-  content: url("imgs/club.svg");
+  content: url("../images/club.svg");
 }
 
 [data-suit="diamond"] .corner-number::after {
-  content: url("imgs/diamond.svg");
+  content: url("../images/diamond.svg");
 }
 
 [data-value="J"][data-suit="diamond"] .pip,
 [data-value="J"][data-suit="heart"] .pip {
-  background-image: url("imgs/jack-red.svg");
+  background-image: url("../images/jack-red.svg");
 }
 [data-value="J"][data-suit="spade"] .pip,
 [data-value="J"][data-suit="club"] .pip {
-  background-image: url("imgs/jack-black.svg");
+  background-image: url("../images/jack-black.svg");
 }
 
 [data-value="Q"][data-suit="diamond"] .pip,
 [data-value="Q"][data-suit="heart"] .pip {
-  background-image: url("imgs/queen-red.svg");
+  background-image: url("../images/queen-red.svg");
 }
 [data-value="Q"][data-suit="spade"] .pip,
 [data-value="Q"][data-suit="club"] .pip {
-  background-image: url("imgs/queen-black.svg");
+  background-image: url("../images/queen-black.svg");
 }
 
 [data-value="K"][data-suit="diamond"] .pip,
 [data-value="K"][data-suit="heart"] .pip {
-  background-image: url("imgs/king-red.svg");
+  background-image: url("../images/king-red.svg");
 }
 [data-value="Joker"] .pip {
-  background-image: url("imgs/joker.svg");
+  background-image: url("../images/joker.svg");
 }
 
 [data-value="A"] .pip,
