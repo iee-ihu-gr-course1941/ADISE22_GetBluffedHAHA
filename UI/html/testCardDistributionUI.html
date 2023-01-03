@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="shortcut icon" href="#">
+  <link rel="stylesheet" type="text/css"  href="../css/cardStyles.css">
+   -->
+</head>
+<body>
+    <input type="button" value="shuffle and distribute" id="shuffle">
+    <script>
+        document.getElementById('shuffle').addEventListener('click',shuffleAndDistribute);
+
+        function shuffleAndDistribute() {
+            // let player_id = document.getElementById('player_id').value;
+            // const url = 'https://users.iee.ihu.gr/~it185186/ADISE22_GetBluffedHAHA/PHP_REST_API/api/card/read.php';
+            const urlForCards = 'http://localhost/PHP_REST_API/api/card/read.php';
+            const urlForCardDistribution = 'http://localhost/PHP_REST_API/api/gametable/add_card.php';
+            // const url = ('http://localhost/PHP_REST_API/api/gametable/get_player_hand.php?' + new URLSearchParams({player_id}).toString());
+            console.log(urlForCards);
+            fetch(urlForCards)
+            .then((res) => res.json())
+            .then((data) => {
+                data =  JSON.stringify(data.data);
+                data = JSON.parse(data);
+                shuffle(data);
+                console.log(data);
+                var i = 1;
+                var player_id = 0;
+                data.forEach(function(card){
+                    console.log(card.id)
+                    if(i<=18){
+                        var player_id = 7
+                    }else if(i>18 && i<=36){
+                        var player_id = 8
+                    }else{
+                        var player_id = 9
+                    }
+
+                    i++;
+                    fetch('http://localhost/PHP_REST_API/api/gametable/add_card.php', {
+                        method:'POST',
+                        headers: {
+                        'Accept': 'application/json, text/plain, */*',
+                        'Content-type':'application/json'
+                        },
+                        body:JSON.stringify({player_id:player_id,
+                                            game_condition_id:4,
+                                            card_id:card.id,
+                                            burned:false
+                        })
+                        })
+                        .then((res) => res.json())
+                        .then((data) => console.log(data))
+                
+                });
+                // addStyles()
+                // // document.getElementById('output').innerHTML = output;
+            })
+            .catch((err) => {console.log(err)})
+    }
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex != 0) {
+
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+    </script>
+</body>
+</html>
