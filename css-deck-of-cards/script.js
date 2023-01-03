@@ -62,7 +62,7 @@ for(var i=0;i<elements.length;i++){
 
 
 //play cards
-var  clickFun=function(){
+/* var  clickFun=function(){
  // if(this.getAttribute("class") == "clicked"){
   if(this.getAttribute("clicked")){
 
@@ -71,7 +71,7 @@ var  clickFun=function(){
   }else{
     console.log("clicked me2");
   }
-}
+} */
 
 
 //drag n drop begins
