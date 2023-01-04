@@ -156,6 +156,43 @@ include_once '../../models/Card.php';
             return false;
         }
 
+        public function playCard(){
+            $query = 'UPDATE ' 
+            . $this->table 
+            . ' SET 
+            player_id =null,
+            burned =:burned,
+            ontable = :ontable
+            where card_id =:card_id
+            ';
+
+            // Clean data
+            $this->id = htmlspecialchars(strip_tags($this->id));
+            $this->player_id = htmlspecialchars(strip_tags($this->player_id));
+            $this->game_condition_id = htmlspecialchars(strip_tags($this->game_condition_id));
+            $this->card_id = htmlspecialchars(strip_tags($this->card_id));
+            $this->burned = htmlspecialchars(strip_tags($this->burned));
+            $this->ontable = htmlspecialchars(strip_tags($this->ontable));
+
+            //Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Bind Parameters
+            // $stmt -> bindParam(':player_id',$this->player_id);
+            $stmt -> bindParam(':card_id',$this->card_id);
+            $stmt -> bindParam(':burned',$this->burned);
+            $stmt -> bindParam(':ontable',$this->ontable);
+
+            if($stmt->execute()){
+                return true;
+            }
+
+            //print error if something went wrong
+            printf("Error: %s.\n",$stmt->error);
+
+            return false;
+        }
+
 
 
     }
