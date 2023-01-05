@@ -3,74 +3,12 @@
 }
 
 body {
-  background-color: rgb(165, 143, 143);
+  background-color: #DDD;
   display: flex;
   flex-wrap: wrap;
   gap: .5em;
-  
-  
 }
-.card-stack{
-  --width: 7em;
-  --height: calc(var(--width) * 1.4);
-  width: var(--width);
-  height: var(--height);
-  background-color: rgb(13, 59, 16);
-  /* border: 1px solid black; */
-  border-radius: .25em;
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  align-items: center;
-  position: absolute;
-  bottom: 450px;
-  left:900px;
 
- 
-}
-.card-in-stack{
-  --width: 5em;
-  --height: calc(var(--width) * 1.4);
-  width: var(--width);
-  height: var(--height);
-  background-color: white;
-  border: 1px solid black;
-  border-radius: .25em;
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  align-items: center;
-  bottom:-300px;
-  position: relative;
-  left:-550px;
-  cursor: not-allowed;
-}
-.clicked{
-
-  --width: 5em;
-  --height: calc(var(--width) * 1.4);
-  width: var(--width);
-  height: var(--height);
-  background-color: white;
-  
-  border-radius: .25em;
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  align-items: center;
-  position: relative;
-  bottom:-750px;
-  left:200px;
-
-
-  border: 1px;
-  border-style:solid;
-  border-color:#ebfc00;
-  padding:10px;  
-}
 .card {
   --width: 5em;
   --height: calc(var(--width) * 1.4);
@@ -84,31 +22,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
-  bottom:-750px;
   position: relative;
-  left:200px;
-  cursor: grab;
-}
-
-.back_card{
-  --width: 5em;
-  --height: calc(var(--width) * 1.4);
-  width: var(--width);
-  height: var(--height);
-  background-color: white;
-  border: 1px solid black;
-  border-radius: .25em;
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  align-items: center;
-  position: relative;
-  
-  background-image: url("imgs/Card_back_05a.svg");
-  background-repeat: no-repeat;
-  background-size: 80px 115px;
-  cursor: not-allowed;
 }
 
 [data-suit="heart"].card,
@@ -173,10 +87,6 @@ body {
   width: .5em;
 }
 
-
-
-
-
 [data-suit="heart"] .corner-number::after {
   content: url("imgs/heart.svg");
 }
@@ -229,7 +139,6 @@ body {
   grid-row-end: span 6;
   grid-column-end: span 3;
 }
-
 
 [data-value="2"] .pip:first-child {
   grid-row-start: 1;
