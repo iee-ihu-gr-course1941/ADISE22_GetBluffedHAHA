@@ -1,6 +1,6 @@
 
 const cards = document.querySelectorAll(".card")
-console.log(cards);
+//console.log(cards);
 cards.forEach(addCardElements)
 
 function addCardElements(card) {
@@ -53,25 +53,70 @@ var myFunction = function(){
 };
 
 for(var i=0;i<elements.length;i++){     
-      elements[i].addEventListener('click',myFunction, false); 
+      //console.log(elements[i]);
+      elements[i].addEventListener('click',myFunction, false);      
       elements[i].addEventListener('dragstart',myFunction, false); //drag n drop
-      elements[i].addEventListener('dragend',myFunction, false); //drag n drop
-      
-            
+      elements[i].addEventListener('dragend',myFunction, false); //drag n drop                 
 }
 
 
-//play cards
-/* var  clickFun=function(){
- // if(this.getAttribute("class") == "clicked"){
-  if(this.getAttribute("clicked")){
+//PLAY CARDS
+var  clickPlay = function(){
 
-    this.setAttribute("class","card-in-stack");
-    console.log("clicked me1");
-  }else{
-    console.log("clicked me2");
-  }
-} */
+  //const cards = document.querySelectorAll(".clicked");
+  jQuery(".clicked").attr('class','back_card');
+  /*
+  jQuery(".clicked").attr('id','playedCard').css({
+    "posistion":"absolute",
+    "bottom":"200px",
+    "--width": "5em",
+    "--height": "calc(var(--width) * 1.4)",
+    "width":" var(--width)",
+    " height":" var(--height)",
+    "background-color": "white",
+    "border": "1px solid black",
+    "border-radius": ".25em",
+    "padding": "1em",
+    "display": "grid",
+    "grid-template-columns": "repeat(3, 1fr)",
+    "grid-template-rows": "repeat(8, 1fr)",
+    "align-items": "center",
+    "position": "absolute",
+  
+    "background-image": "url(../images/Card_back_05a.svg)",
+    "background-repeat": "no-repeat",
+    "background-size": "80px 115px",  
+    
+  }); */
+    //jQuery(".clicked").hide('[data-suit="heart"]');
+} 
+//TAKE CARDS BACK TO YOUR HAND
+var clickTakeBack = function(){
+  //const cards = document.querySelectorAll("#id");
+ 
+  jQuery(".back_card").attr('class','card');
+  //jQuery("#playedCard").removeAttr('id').css({"position":"relative","bottom":"-300px","background-image":"none"});
+  //cards.document.getElementById("id").style.display = "none";
+}
+
+//END TURN
+const back_cards = document.getElementsByClassName(".black_card");
+//console.log(cards);
+var endTurn = function(){
+
+  jQuery(".back_card").attr('class','back_card_burned');
+  //const cards = document.getElementsByClassName(".black_card");
+  //console.log(cards);
+}
+
+
+
+
+
+
+
+
+
 
 
 //drag n drop begins

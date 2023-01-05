@@ -3,50 +3,58 @@
 }
 
 body {
-  background-color: rgb(165, 143, 143);
+  background-color: rgb(12, 56, 15);
   display: flex;
   flex-wrap: wrap;
   gap: .5em;
   
   
 }
-.card-stack{
-  --width: 7em;
-  --height: calc(var(--width) * 1.4);
-  width: var(--width);
-  height: var(--height);
-  background-color: rgb(13, 59, 16);
-  /* border: 1px solid black; */
-  border-radius: .25em;
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  align-items: center;
-  position: absolute;
-  bottom: 450px;
-  left:900px;
-
- 
-}
-.card-in-stack{
-  --width: 5em;
-  --height: calc(var(--width) * 1.4);
-  width: var(--width);
-  height: var(--height);
-  background-color: white;
-  border: 1px solid black;
-  border-radius: .25em;
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  align-items: center;
-  bottom:-300px;
+#container-class{
   position: relative;
-  left:-550px;
-  cursor: not-allowed;
+  top:500px;
+  right: 0px;
+  height: 100px;
+  width:2000px;
 }
+ .back-card-stack{
+  --width: 6em;
+  --height: calc(var(--width) * 1.4);
+  width: var(--width);
+  height: var(--height);
+  background-color:none;
+  border: 3px solid black; 
+  border-radius: .25em;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  align-items: center;
+
+  position: absolute;
+  bottom:-10px;
+  right:992px;
+} 
+
+.back-card-burned-stack{
+  --width: 6em;
+  --height: calc(var(--width) * 1.4);
+  width: var(--width);
+  height: var(--height);
+  background-color:none;
+  border: 3px solid black; 
+  border-radius: .25em;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  align-items: center;
+
+  position: absolute;
+  bottom:180px;
+  right:992px;
+  
+} 
 .clicked{
 
   --width: 5em;
@@ -62,8 +70,9 @@ body {
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
   position: relative;
-  bottom:-750px;
-  left:200px;
+  float:left;
+  bottom:-300px;
+  left:260px;
 
 
   border: 1px;
@@ -80,15 +89,18 @@ body {
   border: 1px solid black;
   border-radius: .25em;
   padding: 1em;
-  display: grid;
+  display: grid !important;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
-  bottom:-750px;
+  bottom:-300px;
   position: relative;
-  left:200px;
-  cursor: grab;
+  left:260px;
+  float:left;
+  
+
 }
+
 
 .back_card{
   --width: 5em;
@@ -103,12 +115,37 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
-  position: relative;
+  position: absolute;
+  bottom:0px;
+  right:1000px;
   
-  background-image: url("imgs/Card_back_05a.svg");
+  background-image: url("../images/Card_back_05a.svg");
   background-repeat: no-repeat;
   background-size: 80px 115px;
-  cursor: not-allowed;
+ 
+}
+
+.back_card_burned{
+  --width: 5em;
+  --height: calc(var(--width) * 1.4);
+  width: var(--width);
+  height: var(--height);
+  background-color: white;
+  border: 1px solid black;
+  border-radius: .25em;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  align-items: center;
+  position: absolute;
+  bottom:190px;
+  right:999px;
+  cursor:not-allowed;
+  
+  background-image: url("../images/Card_back_05a.svg");
+  background-repeat: no-repeat;
+  background-size: 80px 115px; 
 }
 
 [data-suit="heart"].card,
@@ -119,6 +156,21 @@ body {
 [data-suit="spade"].card,
 [data-suit="club"].card {
   color: black;
+}
+#play-card-button{
+  position:absolute;
+  right:20px;
+  top:700px;
+}
+#take-back-card{
+  position:absolute;
+  right:20px;
+  top:750px;
+}
+#end-turn-button{
+  position:absolute;
+  right:20px;
+  top:800px;
 }
 
 .pip {
@@ -131,19 +183,19 @@ body {
 }
 
 [data-suit="heart"] .pip {
-  background-image: url("imgs/heart.svg");
+  background-image: url("../images/heart.svg");
 }
 
 [data-suit="diamond"] .pip {
-  background-image: url("imgs/diamond.svg");
+  background-image: url("../images/diamond.svg");
 }
 
 [data-suit="spade"] .pip {
-  background-image: url("imgs/spade.svg");
+  background-image: url("../images/spade.svg");
 }
 
 [data-suit="club"] .pip {
-  background-image: url("imgs/club.svg");
+  background-image: url("../images/club.svg");
 }
 
 .corner-number {
@@ -178,45 +230,45 @@ body {
 
 
 [data-suit="heart"] .corner-number::after {
-  content: url("imgs/heart.svg");
+  content: url("../images/heart.svg");
 }
 
 [data-suit="spade"] .corner-number::after {
-  content: url("imgs/spade.svg");
+  content: url("../images/spade.svg");
 }
 
 [data-suit="club"] .corner-number::after {
-  content: url("imgs/club.svg");
+  content: url("../images/club.svg");
 }
 
 [data-suit="diamond"] .corner-number::after {
-  content: url("imgs/diamond.svg");
+  content: url("../images/diamond.svg");
 }
 
 [data-value="J"][data-suit="diamond"] .pip,
 [data-value="J"][data-suit="heart"] .pip {
-  background-image: url("imgs/jack-red.svg");
+  background-image: url("../images/jack-red.svg");
 }
 [data-value="J"][data-suit="spade"] .pip,
 [data-value="J"][data-suit="club"] .pip {
-  background-image: url("imgs/jack-black.svg");
+  background-image: url("../images/jack-black.svg");
 }
 
 [data-value="Q"][data-suit="diamond"] .pip,
 [data-value="Q"][data-suit="heart"] .pip {
-  background-image: url("imgs/queen-red.svg");
+  background-image: url("../images/queen-red.svg");
 }
 [data-value="Q"][data-suit="spade"] .pip,
 [data-value="Q"][data-suit="club"] .pip {
-  background-image: url("imgs/queen-black.svg");
+  background-image: url("../images/queen-black.svg");
 }
 
 [data-value="K"][data-suit="diamond"] .pip,
 [data-value="K"][data-suit="heart"] .pip {
-  background-image: url("imgs/king-red.svg");
+  background-image: url("../images/king-red.svg");
 }
 [data-value="Joker"] .pip {
-  background-image: url("imgs/joker.svg");
+  background-image: url("../images/joker.svg");
 }
 
 [data-value="A"] .pip,
