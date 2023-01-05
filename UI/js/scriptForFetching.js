@@ -79,9 +79,9 @@ function getCards() {
             } else {
               node.setAttribute("data-suit", "club");
             }
-            const box = document.getElementById("output");
-            box.appendChild(node);
-            console.log(box.childNodes);
+            document.body.appendChild(node);
+            // const box = document.getElementById("output");
+            // box.appendChild(node);
           } else {
             card.colour = card.colour.toLowerCase();
             const node = document.createElement("div");
@@ -94,20 +94,21 @@ function getCards() {
             } else {
               node.setAttribute("data-suit", "club");
             }
-            const box = document.getElementById("output");
-            box.appendChild(node);
-            console.log(box.childNodes);
+            document.body.appendChild(node);
+            // const box = document.getElementById("output");
+            // box.appendChild(node);
           }
         } else {
           const node = document.createElement("div");
           node.setAttribute("id", card.id);
           node.setAttribute("class", "card");
           node.setAttribute("data-value", "Joker");
-          const box = document.getElementById("output");
-          box.appendChild(node);
-          console.log(box.childNodes);
+          document.body.appendChild(node);
+          // const box = document.getElementById("output");
+          // box.appendChild(node);
         }
       });
+      console.log(document.body.childNodes);
       addStyles();
       attachHighlight();
       // document.getElementById('output').innerHTML = output;
