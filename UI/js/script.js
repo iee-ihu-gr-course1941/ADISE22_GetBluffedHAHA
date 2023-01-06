@@ -61,6 +61,32 @@ for(var i=0;i<elements.length;i++){
 //PLAY CARDS
 var  clickPlay = function(){
   jQuery(".clicked").attr('class','back_card');
+  const cardsToPlay = document.getElementsByClassName("clicked");
+  const playedValue = document.getElementById("cardSelector").value;
+  var bluffFlag = false;
+  cardsToPlay.forEach(function(cardToPlay){
+    if(this.value != playedValue && this.value != "Joker1" && this.value != "Joker2")
+    bluffFlag = true;
+    const url =
+    "http://localhost/PHP_REST_API/api/gametable/play_card";
+     fetch(url,{
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ card_id:  this.id,
+                             burned: false,
+                             ontable: true,
+                             bluff: bluffFlag  }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  } )
+    
+  
+  
+
   /*
   jQuery(".clicked").attr('id','playedCard').css({
     "posistion":"absolute",
@@ -86,6 +112,7 @@ var  clickPlay = function(){
   }); */
     //jQuery(".clicked").hide('[data-suit="heart"]');
 } 
+
 
 //TAKE CARDS BACK TO YOUR HAND
 var clickTakeBack = function(){
