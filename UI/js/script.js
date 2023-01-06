@@ -61,30 +61,7 @@ for(var i=0;i<elements.length;i++){
 //PLAY CARDS
 var  clickPlay = function(){
   jQuery(".clicked").attr('class','back_card');
-  /*
-  jQuery(".clicked").attr('id','playedCard').css({
-    "posistion":"absolute",
-    "bottom":"200px",
-    "--width": "5em",
-    "--height": "calc(var(--width) * 1.4)",
-    "width":" var(--width)",
-    " height":" var(--height)",
-    "background-color": "white",
-    "border": "1px solid black",
-    "border-radius": ".25em",
-    "padding": "1em",
-    "display": "grid",
-    "grid-template-columns": "repeat(3, 1fr)",
-    "grid-template-rows": "repeat(8, 1fr)",
-    "align-items": "center",
-    "position": "absolute",
   
-    "background-image": "url(../images/Card_back_05a.svg)",
-    "background-repeat": "no-repeat",
-    "background-size": "80px 115px",  
-    
-  }); */
-    //jQuery(".clicked").hide('[data-suit="heart"]');
 } 
 
 //TAKE CARDS BACK TO YOUR HAND
