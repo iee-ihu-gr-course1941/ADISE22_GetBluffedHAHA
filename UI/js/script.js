@@ -83,7 +83,11 @@ var  clickPlay = function(){
       .then((res) => res.json())
       .then((data) => console.log(data));
   } )
-    
+  
+  callBluff = function(){
+    const url =
+    "http://localhost/PHP_REST_API/api/gametable/play_card";
+  }
   
   
 
