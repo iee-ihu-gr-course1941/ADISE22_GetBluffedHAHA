@@ -11,6 +11,7 @@ include_once '../../models/Card.php';
         private $card_id;
         private $burned;
         private $ontable;
+        private $bluff;
         
         //CONSTRUCTOR
         public function __construct($db)
@@ -37,7 +38,9 @@ include_once '../../models/Card.php';
         public function setOntable($ontable){
             $this->ontable = $ontable;
         }
-
+        public function setBluff($bluff){
+            $this->bluff = $bluff;
+        }
         // GETTERS
         public function getId(){
             return $this->id;
@@ -61,20 +64,28 @@ include_once '../../models/Card.php';
         public function getOntable(){
             return $this->ontable;
         }
-        
+        public function getBluff(){
+            return $this->bluff;
+        }
 
         //READ TABLE
-        public function read(){
-            $query = 'SELECT  g.id, g.player_id, g.game_condition_id,  g.card_id, g.burned
-                        FROM ' . $this->table . ' g ';
+        public function joinCheckBluff(){
+            $query = 'SELECT  g.id, g.player_id,g.card_id,g.bluff
+                        FROM ' . $this->table . ' g 
+                        JOIN check_bluff cb 
+                        ON g.card_id = cb.card_id
+                        where player_id = :player_id ';
 
-            //Prepare statement
-            $stmt = $this->conn->prepare($query);
+             //Prepare statement
+             $stmt = $this->conn->prepare($query);
 
-            //Execute query
-            $stmt->execute();
-
-            return $stmt;
+             //Bind player_id
+             $stmt -> bindParam(1,$this->player_id);
+ 
+             //Execute query
+             $stmt -> execute();
+ 
+             return $stmt;
         }
 
         //GET PLAYER HAND
