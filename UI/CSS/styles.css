@@ -33,7 +33,7 @@ body {
   align-items: center;
 
   position: absolute;
-  bottom:-10px;
+  bottom:185px;
   right:992px;
 } 
 
@@ -53,7 +53,9 @@ body {
 
   position: absolute;
   bottom:180px;
-  right:992px;
+  left: 400px;
+  background-color: black;
+  opacity: 40%;
   
 } 
 .clicked{
@@ -76,9 +78,9 @@ body {
   left:260px;
 
 
-  border: 1px;
+  border: 2px;
   border-style:solid;
-  border-color:#ebfc00;
+  border-color:#fc0000;
   padding:10px;  
 }
 
@@ -88,12 +90,13 @@ body {
   top:500px;
   height: 100px; 
   width: 210px;
-  background-color: maroon;
+  background-color: mediumslateblue;
   color: beige;
   border-radius: 10px; 
   font-family: "Consolas"; 
   font-weight: bolder;
   font-size:25px;
+  
   
   
 }
@@ -116,10 +119,12 @@ body {
   position:absolute;
   right:610px;
   top:980px;
-  font-size:20px;
+  font-size:25px;
   color: aqua;
   font-family: "Consolas"; 
   font-weight: bolder;
+  -webkit-text-stroke: 0.3px black;
+  
 }
 
 .card {
@@ -158,12 +163,13 @@ body {
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
   position: absolute;
-  bottom:0px;
+  bottom:196px;
   right:1000px;
   
   background-image: url("../images/Card_back_05a.svg");
   background-repeat: no-repeat;
   background-size: 80px 115px;
+  z-index: 20;
  
 }
 
@@ -181,8 +187,8 @@ body {
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
   position: absolute;
-  bottom:190px;
-  right:999px;
+  bottom:185px;
+  left: 405px;
   cursor:not-allowed;
   
   background-image: url("../images/Card_back_05a.svg");
@@ -283,6 +289,52 @@ body {
   color: aqua;
   top: 100px;
   right: 580px;
+}
+
+#quit-button{
+  position:absolute;
+  right:20px;
+  top:20px;
+  height: 100px; 
+  width: 100px;
+  background-color: maroon;
+  color: beige;
+  border-radius: 40px; 
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:25px;
+}
+
+#player-2-info{
+  position: absolute;
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:28px;
+  color: aqua;
+  top: 150px;
+  right: 1845px;
+}
+
+#player-3-info{
+  position: absolute;
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:28px;
+  color: aqua;
+  top: 150px;
+  right:575px;
+}
+
+#burned-text{
+  position: absolute;
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:28px;
+  color: aqua;
+  transform: rotate(-90deg);
+  bottom:688px;
+  left: 290px;
+  opacity: 90%;
 }
 
 
