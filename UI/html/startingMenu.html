@@ -11,10 +11,14 @@
     <h1>Welcome to the Card Game!</h1>
     <p>Please select an option from the menu below:</p>
     <ul>
-      <li><a href="#">New Game</a></li>
+      <input type="text" placeholder="Enter your name" id="playername">
+      <input type="button" onClick = "playerLogin()" value="login" id="login">
+      <input type="button" onClick = "getPlayerInfo()" value="player info" id="info">
+      <li><a href="./gameTable.html">New Game</a></li>
       <li><a href="#">Instructions</a></li>
       <li><a href="#">High Scores</a></li>
       <li><a href="#">Quit</a></li>
     </ul>
+    <script src="../js/playerManipulation.js" defer></script>
   </body>
 </html>

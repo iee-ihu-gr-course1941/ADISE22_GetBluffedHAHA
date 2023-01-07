@@ -11,74 +11,86 @@
 </head>
 <body>
     <input type="button" value="shuffle and distribute" id="shuffle">
+    <input type="button" value="pame"></output>
     <script>
-        document.getElementById('shuffle').addEventListener('click',shuffleAndDistribute);
+        document.getElementById('shuffle').addEventListener('click',itterateThroughPlayers);
 
-        function shuffleAndDistribute() {
-            // let player_id = document.getElementById('player_id').value;
-            // const url = 'https://users.iee.ihu.gr/~it185186/ADISE22_GetBluffedHAHA/PHP_REST_API/api/card/read.php';
-            const urlForCards = 'http://localhost/PHP_REST_API/api/card/read.php';
-            const urlForCardDistribution = 'http://localhost/PHP_REST_API/api/gametable/add_card.php';
-            // const url = ('http://localhost/PHP_REST_API/api/gametable/get_player_hand.php?' + new URLSearchParams({player_id}).toString());
-            console.log(urlForCards);
-            fetch(urlForCards)
-            .then((res) => res.json())
+        // setInterval(GetPlayerStatus, 1000);
+        
+        function itterateThroughPlayers() {
+            const urlForPlayers = 'http://localhost/PHP_REST_API/api/player/read.php';
+            let playerData = [];
+            const playerDataResponse = fetch(urlForPlayers)
+            .then(response => response.json())
             .then((data) => {
                 data =  JSON.stringify(data.data);
                 data = JSON.parse(data);
-                shuffle(data);
-                console.log(data);
-                var i = 1;
-                var player_id = 0;
-                data.forEach(function(card){
-                    console.log(card.id)
-                    if(i<=18){
-                        var player_id = 7
-                    }else if(i>18 && i<=36){
-                        var player_id = 8
-                    }else{
-                        var player_id = 9
+                const cardIds = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54]
+                shuffle(cardIds)
+                console.log(cardIds)
+                data.forEach(function(player){ 
+                    if (player.name.length!=0) {
+                        for(var i=0;i<18;i++){
+                        // console.log(cardIds.shift())
+                        console.log(cardIds)
+                        console.log("player and card counter "+cardIds.length);
+                        distributeCardsToPlayers(player.id,cardIds.shift())
                     }
+                    }
+                });
+            })
+            .catch(error => console.log('error', error));
+        }
 
-                    i++;
-                    fetch('http://localhost/PHP_REST_API/api/gametable/add_card.php', {
+    // function GetPlayerStatus() {
+    //     const url =
+    //     "http://localhost/PHP_REST_API/api/player/read.php";
+    //     console.log(url);
+    //     fetch(url)
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //     data = JSON.stringify(data.data);
+    //     data = JSON.parse(data);
+    //     console.log(data);  
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
+    // }
+        function distributeCardsToPlayers(playerId,cardId) {
+            fetch('http://localhost/PHP_REST_API/api/gametable/add_card.php', {
                         method:'POST',
                         headers: {
                         'Accept': 'application/json, text/plain, */*',
                         'Content-type':'application/json'
                         },
-                        body:JSON.stringify({player_id:player_id,
-                                            game_condition_id:4,
-                                            card_id:card.id,
+                        body:JSON.stringify({player_id:playerId,
+                                            game_condition_id:11,
+                                            card_id:cardId,
                                             burned:false
                         })
                         })
                         .then((res) => res.json())
                         .then((data) => console.log(data))
-                
-                });
-                // addStyles()
-                // // document.getElementById('output').innerHTML = output;
-            })
-            .catch((err) => {console.log(err)})
-    }
-    function shuffle(array) {
-        let currentIndex = array.length,  randomIndex;
+        }
 
-        // While there remain elements to shuffle.
-        while (currentIndex != 0) {
+        function shuffle(array) {
+            let currentIndex = array.length,  randomIndex;
 
-            // Pick a remaining element.
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
+            // While there remain elements to shuffle.
+            while (currentIndex != 0) {
 
-            // And swap it with the current element.
-            [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]];
-  }
+                // Pick a remaining element.
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
 
-  return array;
-}
+                // And swap it with the current element.
+                [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
+            }
+
+            return array;
+        }
     </script>
 </body>
 </html>

@@ -21,7 +21,8 @@ include_once '../../models/Player.php';
  $player_array = array(
     'id' => $player->getId(),
     'name' => $player->getName(),
-    'created' => $player->getCreated()
+    'created' => $player->getCreated(),
+    'token' => $player->getToken()
  );
 
  //make json
