@@ -12,7 +12,7 @@ body {
 }
 #container-class{
   position: relative;
-  top:500px;
+  top:700px;
   right: 0px;
   height: 100px;
   width:2000px;
@@ -22,7 +22,8 @@ body {
   --height: calc(var(--width) * 1.4);
   width: var(--width);
   height: var(--height);
-  background-color:none;
+  background-color:grey;
+  opacity: 50%;
   border: 3px solid black; 
   border-radius: .25em;
   padding: 1em;
@@ -80,6 +81,47 @@ body {
   border-color:#ebfc00;
   padding:10px;  
 }
+
+#callBluff {
+  position:absolute;
+  right:20px;
+  top:500px;
+  height: 100px; 
+  width: 210px;
+  background-color: maroon;
+  color: beige;
+  border-radius: 10px; 
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:25px;
+  
+  
+}
+
+#cardSelector {
+  position:absolute;
+  right:700px;
+  top:1050px;
+  height: 50px;
+  width:50px;
+  border-radius: 5px;
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:25px;
+  background-color:beige;
+
+}
+
+#selectorText {
+  position:absolute;
+  right:610px;
+  top:980px;
+  font-size:20px;
+  color: aqua;
+  font-family: "Consolas"; 
+  font-weight: bolder;
+}
+
 .card {
   --width: 5em;
   --height: calc(var(--width) * 1.4);
@@ -161,17 +203,57 @@ body {
   position:absolute;
   right:20px;
   top:700px;
+  width: 210px;
+  border-radius: 10px; 
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:25px;
+  background-color: beige;
 }
 #take-back-card{
   position:absolute;
   right:20px;
-  top:750px;
+  top:800px;
+  width: 210px;
+  border-radius: 10px; 
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:25px;
+  background-color: beige;
+  
 }
 #end-turn-button{
   position:absolute;
   right:20px;
-  top:800px;
+  top:900px;
+  width: 210px;
+  height: 80px;
+  border-radius: 10px; 
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:25px;
+  background-color: orange;
 }
+
+#player-icon-1{
+  position: absolute;
+  width: 100px;
+  height:100px;
+  right: 600px;
+  top: 5px;
+  
+  
+} 
+
+#player-icon-2{
+  position: absolute;
+  width: 100px;
+  height:100px;
+  left:600px;
+  top: 5px;
+  
+} 
+
 
 .pip {
   grid-row-end: span 2;
