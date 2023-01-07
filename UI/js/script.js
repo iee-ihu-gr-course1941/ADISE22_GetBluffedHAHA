@@ -89,7 +89,7 @@ var  clickPlay = function(){
     "http://localhost/PHP_REST_API/api/gametable/play_card";
   }
   
-  
+} 
 
   /*
   jQuery(".clicked").attr('id','playedCard').css({
@@ -109,12 +109,6 @@ var  clickPlay = function(){
     "align-items": "center",
     "position": "absolute",
   
-    "background-image": "url(../images/Card_back_05a.svg)",
-    "background-repeat": "no-repeat",
-    "background-size": "80px 115px",  
-    
-  }); */
-    //jQuery(".clicked").hide('[data-suit="heart"]');
 } 
 
 
@@ -206,7 +200,7 @@ let items = document.querySelectorAll('.card');
 //drag n drops ends
 
 
-
+*/
 
 
 

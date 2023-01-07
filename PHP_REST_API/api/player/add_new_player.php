@@ -2,7 +2,7 @@
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
     header('Access-Control-Allow-Methods: POST');
-    header('Access-Control-Allow-Headers: Content-Type,Access-Control-Allow-Methods,Authorization,X-Requested-With');
+    header('Access-Control-Allow-Headers: Content-Type,Access-Control-Allow-Methods,Authorization,X-Token');
 
     include_once '../../config/Database.php';
     include_once '../../models/Player.php';
@@ -19,12 +19,12 @@
 
     // $player->setName('alex');
     $player->setName($data->name);
-
     //create player
     if($player->add_new_player()){
         echo json_encode(
-            array('message' =>'added new player')
+            array('message'=>'New Player added successfully')
         );
+        // print_r($_POST);
     }else{
         echo json_encode(
             array('message' =>'failed to add new player')

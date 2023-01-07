@@ -8,6 +8,7 @@
         private $id;
         private $name;
         private $created;
+        private $token;
 
         public function __construct($db)
         {
@@ -27,6 +28,10 @@
             return $this->name;
         }
 
+        public function getToken(){
+            return $this->token;
+        }
+
         public function setName($name){
             $this->name = $name;
         }
@@ -35,8 +40,11 @@
             return $this->created;
         }
 
+        public function setToken($token){
+            $this->token = $token;
+        }
         public function read(){
-            $query = 'SELECT  t.id,t.name, t.created
+            $query = 'SELECT  t.id,t.name, t.created, t.token
                         FROM ' . $this->table . ' t ';
 
             //Prepare statement
@@ -72,7 +80,7 @@
         }
 
         public function get_player_with_name(){
-            $query = 'SELECT  t.id,t.name, t.created 
+            $query = 'SELECT  t.id,t.name, t.created,t.token
                         FROM ' . $this->table .
                          ' t  where t.name = ? LIMIT 0,1';
 
@@ -91,14 +99,15 @@
             $this->id = $row['id'];
             $this->name = $row['name'];
             $this->created = $row['created'];
-
+            $this->token = $row['token'];
         }
 
         public function add_new_player(){
             $query = 'INSERT INTO ' 
             . $this->table 
             .' SET 
-            name =:name';
+            name =:name,
+            token = md5(:name) ';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -111,7 +120,6 @@
             //Bind params
             // $stmt -> bindParam(':id',$this->id);
             $stmt -> bindParam(':name',$this->name);
-            // $stmt -> bindParam(':created',$this->created);
 
             if($stmt->execute()){
                 return true;

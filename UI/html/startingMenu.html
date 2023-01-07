@@ -5,16 +5,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" type="text/css"  href="../css/menuStyles.css">
+  <link rel="stylesheet" type="text/css"  href="../CSS/menuStyles.css">
 </head>
   <body>
+    
+    <div class="container">
+      <div class="menu-box">
+        <h1 id="header">Welcome to Get Bluffed!</h1>
+        <div class="menu-links">
+          <a href="startingMenu.html">Home</a>
+          <a href="index.html">New Game</a>
+          <a href="instructions.html">Instructions</a>
+          <a href="#">High Score</a>
+          <h2 id="infoh2" ><img id="infoimage" src="../images/pnginfo.png">INFO</h2>
+          <p id="info">Η εργασία υλοποιήθηκε απο τους: <br> Αποστολίδης Μιχαήλ, Καλούδης Αλεξανδρός, Παυλίδης Γεώργιος<br>για το μάθημα Α.ΔΙ.Σ.Ε στο χειμερινό εξάμηνο 2022-2023.</p>
+        <!--   <a href="#">Quit</a>  </ul> -->
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </body>
+</html>
+   <!-- 
     <h1>Welcome to the Card Game!</h1>
-    <p>Please select an option from the menu below:</p>
+     <p>Please select an option from the menu below:</p>
     <ul>
-      <li><a href="#">New Game</a></li>
+      <input type="text" placeholder="Enter your name" id="playername">
+      <input type="button" onClick = "playerLogin()" value="login" id="login">
+      <input type="button" onClick = "getPlayerInfo()" value="player info" id="info">
+      <li><a href="./gameTable.html">New Game</a></li>
       <li><a href="#">Instructions</a></li>
       <li><a href="#">High Scores</a></li>
       <li><a href="#">Quit</a></li>
     </ul>
+    <script src="../js/playerManipulation.js" defer></script>
   </body>
 </html>
+    </ul> -->
