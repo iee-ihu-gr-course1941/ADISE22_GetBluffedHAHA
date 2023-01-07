@@ -1,6 +1,6 @@
 
 const cards = document.querySelectorAll(".card")
-console.log(cards);
+//console.log(cards);
 cards.forEach(addCardElements)
 
 function addCardElements(card) {
@@ -46,32 +46,45 @@ var elements = document.getElementsByClassName("card");
 var myFunction = function(){  
  if(this.getAttribute("class") == "card") {
   this.setAttribute("class","clicked");
-  //console.log("clicked me");
 }else{
   var attribute = this.setAttribute("class","card"); 
 }
 };
 
-for(var i=0;i<elements.length;i++){     
-      elements[i].addEventListener('click',myFunction, false); 
+for(var i=0;i<elements.length;i++){          
+      elements[i].addEventListener('click',myFunction, false);      
       elements[i].addEventListener('dragstart',myFunction, false); //drag n drop
-      elements[i].addEventListener('dragend',myFunction, false); //drag n drop
-      
-            
+      elements[i].addEventListener('dragend',myFunction, false); //drag n drop                 
 }
 
 
-//play cards
-/* var  clickFun=function(){
- // if(this.getAttribute("class") == "clicked"){
-  if(this.getAttribute("clicked")){
+//PLAY CARDS
+var  clickPlay = function(){
+  jQuery(".clicked").attr('class','back_card');
+  
+} 
 
-    this.setAttribute("class","card-in-stack");
-    console.log("clicked me1");
-  }else{
-    console.log("clicked me2");
-  }
-} */
+//TAKE CARDS BACK TO YOUR HAND
+var clickTakeBack = function(){
+  jQuery(".back_card").attr('class','card');
+  //jQuery("#playedCard").removeAttr('id').css({"position":"relative","bottom":"-300px","background-image":"none"});
+}
+
+//END TURN, not final
+var endTurn = function(){
+  jQuery(".back_card").attr('class','back_card_burned');
+  //const cards = document.getElementsByClassName(".black_card");
+  //console.log(cards);
+}
+
+
+
+
+
+
+
+
+
 
 
 //drag n drop begins
