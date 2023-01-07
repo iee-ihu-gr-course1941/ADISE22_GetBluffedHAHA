@@ -254,6 +254,37 @@ body {
   
 } 
 
+#player-name-1{
+  position: absolute;
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:28px;
+  color: aqua;
+  bottom: 20px;
+  right: 1200px;
+}
+
+#player-name-2{
+  position: absolute;
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:28px;
+  color: aqua;
+  top: 100px;
+  right: 1850px;
+
+}
+
+#player-name-3{
+  position: absolute;
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:28px;
+  color: aqua;
+  top: 100px;
+  right: 580px;
+}
+
 
 .pip {
   grid-row-end: span 2;
