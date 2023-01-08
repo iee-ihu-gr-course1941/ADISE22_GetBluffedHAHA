@@ -270,7 +270,7 @@ function callBluff(){
   
   function emptyCheckBluffTable() {
     const url = "http://localhost/PHP_REST_API/api/checkbluff/empty_check_bluff.php"
-    fetch(urlToRaiseCardsFromTable,{
+    fetch(url,{
       method: "DELETE",
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -346,5 +346,5 @@ function shuffle(array) {
 }
 
 function GetGameStatus(){
-    
+
 }
