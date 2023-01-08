@@ -185,6 +185,7 @@ var  clickPlay = function(){
   console.log(playedValue)
   
   cardsToPlay.forEach(function(cardToPlay){
+      // console.log(currentPlayer);
       console.log(cardToPlay.getAttribute("data-value"))
       if(cardToPlay.getAttribute("data-value") != playedValue && cardToPlay.getAttribute("data-value") != "Joker"){
           bluffFlag = true;     
@@ -205,26 +206,39 @@ var  clickPlay = function(){
           })
             .then((res) => res.json())
             .then((data) => console.log(data));
-          
-          const urlToInsertOnCheckBluff =
-          "http://localhost/PHP_REST_API/api/checkbluff/add_new_check.php";
-          fetch(url,{
-            method: "POST",
-            headers: {
-              Accept: "application/json, text/plain, */*",
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({ card_id:  cardToPlay.id,
-                                  burned: false,
-                                  ontable: true,
-                                  bluff: bluffFlag  }),
-          })
-            .then((res) => res.json())
-            .then((data) => console.log(data));
+            console.log("current card id"+cardToPlay.id);
+          insertOnCheckBluff(cardToPlay.id)
+          // const urlToInsertOnCheckBluff =
+          // "http://localhost/PHP_REST_API/api/checkbluff/add_new_check.php";
+          // fetch(urlToInsertOnCheckBluff,{
+          //   method: "POST",
+          //   headers: {
+          //     Accept: "application/json, text/plain, */*",
+          //     "Content-type": "application/json",
+          //   },
+          //   body: JSON.stringify({ 
+          //                         player_id:playerId,
+          //                         card_id: cardToPlay.id }),
+          // })
+          //   .then((res) => res.json())
+          //   .then((data) => console.log(data));
       bluffFlag = false;
   }) 
   // jQuery(".clicked").attr('class','back_card');
-} 
+}
+
+function getCurrentPlayerId(){
+  const url ="http://localhost/PHP_REST_API/api/gamecondition/get_current_player.php";
+  fetch(url)
+  .then((res) => res.json())
+  .then((data) => {
+      data =  JSON.stringify(data.data);
+      data = JSON.parse(data);
+      return data;
+  })
+  .catch(error => console.log('error', error));
+  return null;
+}
 
 function callBluff(){
     const url ="http://localhost/PHP_REST_API/api/gametable/get_last_played_cards.php";
@@ -347,4 +361,35 @@ function shuffle(array) {
 
 function GetGameStatus(){
 
+}
+
+function insertOnCheckBluff(cardId){
+  const url ="http://localhost/PHP_REST_API/api/gamecondition/get_current_game_condition.php?"+
+  new URLSearchParams({ id: 11 });
+
+      fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        
+        data = JSON.stringify(data);
+        data = JSON.parse(data);
+        console.log(data.p_turn);
+        const urlToInsertOnCheckBluff =
+          "http://localhost/PHP_REST_API/api/checkbluff/add_new_check.php";
+          fetch(urlToInsertOnCheckBluff,{
+            method: "POST",
+            headers: {
+              Accept: "application/json, text/plain, */*",
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({ 
+                                  player_id:data.p_turn,
+                                  card_id: cardId }),
+          })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
+      })
+      .catch((err) => {
+        console.log(err);
+  })
 }

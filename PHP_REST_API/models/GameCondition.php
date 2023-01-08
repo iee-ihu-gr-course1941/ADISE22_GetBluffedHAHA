@@ -93,6 +93,30 @@
             return false;
 
         }
+        public function getCurrentGameCondition(){
+            $query = 'SELECT  *
+                        FROM ' . $this->table .
+                         ' where id = :id';
+            // print_r(json_encode($query));
+            //Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Bind id
+            $stmt -> bindParam(":id",$this->id);
+
+            //Execute query
+            $stmt->execute();
+
+            $row = $stmt-> fetch(PDO::FETCH_ASSOC);
+
+            //Set properties
+            $this->id = $row['id'];
+            $this->p_turn = $row['p_turn'];
+            $this->status = $row['status'];
+            $this->last_change = $row['last_change'];
+
+            return $stmt;
+        }
 
          //CHANGE GAME STATUS
          public function changeStatus(){
