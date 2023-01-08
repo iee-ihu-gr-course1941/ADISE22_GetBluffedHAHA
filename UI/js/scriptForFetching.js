@@ -1,5 +1,5 @@
 document.getElementById("get-cards-button").addEventListener("click", getCards);
-
+setInterval(GetGameStatus, 1000);
 
 function getCards() {
   let player_id = document.getElementById("player_id").value;
@@ -176,6 +176,8 @@ function addPlayer(e) {
 
 //PLAY CARDS
 var  clickPlay = function(){
+  //adeiasma tou pinaka checkbluff gia na gemisei me thn kainourgia paiksia
+  emptyCheckBluffTable()
   const cardsToPlay = document.querySelectorAll(".clicked")
   const playedValue = document.getElementById("cardSelector").value;
   var bluffFlag = false;
@@ -183,43 +185,43 @@ var  clickPlay = function(){
   console.log(playedValue)
   
   cardsToPlay.forEach(function(cardToPlay){
-    console.log(cardToPlay.getAttribute("data-value"))
-    if(cardToPlay.getAttribute("data-value") != playedValue && cardToPlay.getAttribute("data-value") != "Joker"){
-        bluffFlag = true;     
-    }
-    console.log(bluffFlag);
-        const url =
-        "http://localhost/PHP_REST_API/api/gametable/play_card.php";
-        fetch(url,{
-          method: "PUT",
-          headers: {
-            Accept: "application/json, text/plain, */*",
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({ card_id:  cardToPlay.id,
-                                burned: false,
-                                ontable: true,
-                                bluff: bluffFlag  }),
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data));
-        
-        const urlToInsertOnCheckBluff =
-        "http://localhost/PHP_REST_API/api/checkbluff/add_new_check.php";
-        fetch(url,{
-          method: "POST",
-          headers: {
-            Accept: "application/json, text/plain, */*",
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({ card_id:  cardToPlay.id,
-                                burned: false,
-                                ontable: true,
-                                bluff: bluffFlag  }),
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data));
-    bluffFlag = false;
+      console.log(cardToPlay.getAttribute("data-value"))
+      if(cardToPlay.getAttribute("data-value") != playedValue && cardToPlay.getAttribute("data-value") != "Joker"){
+          bluffFlag = true;     
+      }
+      console.log(bluffFlag);
+          const url =
+          "http://localhost/PHP_REST_API/api/gametable/play_card.php";
+          fetch(url,{
+            method: "PUT",
+            headers: {
+              Accept: "application/json, text/plain, */*",
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({ card_id:  cardToPlay.id,
+                                  burned: false,
+                                  ontable: true,
+                                  bluff: bluffFlag  }),
+          })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
+          
+          const urlToInsertOnCheckBluff =
+          "http://localhost/PHP_REST_API/api/checkbluff/add_new_check.php";
+          fetch(url,{
+            method: "POST",
+            headers: {
+              Accept: "application/json, text/plain, */*",
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({ card_id:  cardToPlay.id,
+                                  burned: false,
+                                  ontable: true,
+                                  bluff: bluffFlag  }),
+          })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
+      bluffFlag = false;
   }) 
   // jQuery(".clicked").attr('class','back_card');
 } 
@@ -247,7 +249,6 @@ function callBluff(){
         emptyCheckBluffTable()
     })
     .catch(error => console.log('error', error));
-    //κληση ενος request που θα διαγραφει τον call_bluff
   }
 
   
@@ -290,14 +291,18 @@ function callBluff(){
         const cardIds = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54]
         shuffle(cardIds)
         console.log(cardIds)
+        var cardsOnTable =0;
         data.forEach(function(player){ 
-            if (player.name.length!=0) {
+            if (player.name.length!=0 && cardsOnTable<=54) {
                 for(var i=0;i<18;i++){
                     // console.log(cardIds.shift())
                     console.log(cardIds)
                     console.log("player and card counter "+cardIds.length);
                     distributeCardsToPlayers(player.id,cardIds.shift())
+                    cardsOnTable++;
                 }
+            }else{
+              window.alert("all cards were distributed to players");
             }
         });
     })
@@ -319,6 +324,7 @@ function distributeCardsToPlayers(playerId,cardId) {
                 })
                 .then((res) => res.json())
                 .then((data) => console.log(data))
+    
 }
 
 function shuffle(array) {
@@ -337,4 +343,8 @@ function shuffle(array) {
     }
 
     return array;
+}
+
+function GetGameStatus(){
+    
 }
