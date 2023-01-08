@@ -60,8 +60,7 @@ for(var i=0;i<elements.length;i++){
 
 //PLAY CARDS
 var  clickPlay = function(){
-  jQuery(".clicked").attr('class','back_card');
-  
+  jQuery(".clicked").attr('class','back_card');  
 } 
 
 //TAKE CARDS BACK TO YOUR HAND
@@ -78,8 +77,13 @@ var endTurn = function(){
 }
 
 
+//Set timeout 
+setTimeout(timeFun,60000);
 
-
+function timeFun(){
+  alert("Perase ena lepto");
+  //console.log("perase ena lepto"); 
+}
 
 
 
