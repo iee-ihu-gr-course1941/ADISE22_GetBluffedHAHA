@@ -41,6 +41,23 @@
             $this->card_id = $card_id;
         }
 
+        public function emptyCheckBluff(){
+            $query = 'DELETE FROM ' 
+            . $this->table;
+
+            //Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            if($stmt->execute()){
+                return true;
+            }
+
+            //print error if something went wrong
+            printf("Error: %s.\n",$stmt->error);
+
+            return false;
+        }
+
         public function addNewCheck(){
             $query = 'INSERT INTO ' 
             . $this->table 
@@ -53,6 +70,7 @@
             $this->id = htmlspecialchars(strip_tags($this->id));
             $this->player_id = htmlspecialchars(strip_tags($this->player_id));
             $this->card_id = htmlspecialchars(strip_tags($this->card_id));
+            $this->last_changed = htmlspecialchars(strip_tags($this->last_changed));
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);

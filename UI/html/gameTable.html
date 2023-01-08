@@ -4,27 +4,51 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Bluff game table</title>
   <link rel="shortcut icon" href="#">
   <link rel="stylesheet" type="text/css"  href="../CSS/styles.css">
   
 </head>
 <body>
-  <!-- <button id="getText">get text</button>
-    <button id="getUsers">get Users</button> -->
-    <button id="getCards">get Cards</button> 
+    <button id="get-cards-button">get Cards</button> 
     <input type="text" id="player_id" placeholder="insert player id">
-     <!-- <div id="output"></div> -->
-     <!-- <form >
-        <div>
-            <input type="text" id="playername" placeholder="insert player name">
-        </div>
-        <input type="submit"  value="submit" id="addPlayer">
-     </form>
-        
-    <input type="text" id="name" placeholder="insert player name">
-    <div id="outputplayer"></div>
-    <input type="button"   value="Search" id="getplayername"> -->
+    <div class="back-card-stack"></div>
+    <div class="back-card-burned-stack"></div>
+    
+ 
+  </div> 
+   <a href="startingMenu.html" id="quit-game"></a> 
+   <button onclick="clickPlay()" id="play-card-button" >PLAY CARDS</button>
+   <button onclick="clickTakeBack()" id="take-back-card">TAKE BACK CARD</button>
+   <button onclick="callBluff()" id="callBluff">CALL BLUFF</button>
+   <button onclick="passTurn()" id="end-turn-button">PASS</button>
+   <button id="quit-button">QUIT GAME</button>
+   <p id="selectorText">WHAT CARD TO CALL:</p>
+   <select id="cardSelector">
+     <option value="A">A</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5</option>
+     <option value="6">6</option>
+     <option value="7">7</option>
+     <option value="8">8</option>
+     <option value="9">9</option>
+     <option value="10">10</option>
+     <option value="J">J</option>
+     <option value="Q">Q</option>
+     <option value="K">K</option>
+   </select>
+ 
+   <img src="../images/player-icon-1.png" id="player-icon-1">
+   <img src="../images/player-icon-2.png" id="player-icon-2">
+ 
+   <p id="player-name-1">PLAYER 1</p>
+   <p id="player-name-2">PLAYER 2</p>
+   <p id="player-name-3">PLAYER 3</p>
+   <p id="player-2-info">CARDS IN HAND:</p>
+   <p id="player-3-info">CARDS IN HAND:</p>
+   <p id="burned-text">BURNED CARDS</p>
   <script src="../js/scriptForFetching.js" defer></script>
 
 </div> 

@@ -13,11 +13,11 @@ include_once '../../models/GameTable.php';
  // Instantiate card model
  $gameTable = new GameTable($db);
 
- //Get id
- $gameTable->setPlayerId(isset($_GET['player_id']) ? $_GET['player_id'] : die());
+//  //Get id
+//  $gameTable->setPlayerId(isset($_GET['player_id']) ? $_GET['player_id'] : die());
 
  //cards query
- $result = $gameTable->joinCheckBluff();
+ $result = $gameTable->getLastPlayedCards();
  //get row count
  $rowcount = $result->rowCount();
 

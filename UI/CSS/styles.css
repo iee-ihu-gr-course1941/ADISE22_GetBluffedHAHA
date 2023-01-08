@@ -86,16 +86,17 @@ body {
 
 #callBluff {
   position:absolute;
-  right:1%;
-  top: 38%;
-  height: 100px; 
+  right:2%;
+ bottom: 50%;
   width: 210px;
+  height: 50px;
   background-color: mediumslateblue;
   color: beige;
   border-radius: 10px; 
   font-family: "Consolas"; 
   font-weight: bolder;
   font-size:25px;
+  padding: 0.5em;
   
   
   
@@ -207,11 +208,13 @@ body {
 }
 #play-card-button{
   position:absolute;
-  right:1%;
-  top:50%;
-  height: 50px;
+  right:2%;
+  bottom:75%;
   width: 210px;
-  border-radius: 10px; 
+  height: 50px;
+  border-radius: 10px;
+  /* margin-bottom: 2em; */
+  /* margin: 0.5em;  */
   font-family: "Consolas"; 
   font-weight: bolder;
   font-size:25px;
@@ -220,9 +223,10 @@ body {
 #take-back-card{
   position:absolute;
   right:1%;
-  top:57%;
+  top:58%;
   width: 210px;
   height: 50px;
+  margin: 0.5em;
   border-radius: 10px; 
   font-family: "Consolas"; 
   font-weight: bolder;
@@ -233,9 +237,23 @@ body {
 #end-turn-button{
   position:absolute;
   right:1%;
-  top:65%;
+  bottom:60%;
   width: 210px;
-  height: 80px;
+  height: 50px;
+  margin: 0.5em;
+  border-radius: 10px; 
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:25px;
+  background-color: orange;
+}
+#get-cards-button{
+  position:absolute;
+  left:1%;
+  bottom:60%;
+  width: 210px;
+  height: 50px;
+  margin: 0.5em;
   border-radius: 10px; 
   font-family: "Consolas"; 
   font-weight: bolder;

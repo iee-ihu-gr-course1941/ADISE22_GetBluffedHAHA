@@ -16,10 +16,10 @@
 
     //get raw posted data
     $data = json_decode(file_get_contents("php://input"));
-
+    
     //$gameTable
-    $checkbluff->setPlayerId($data->player_id);
-    $checkbluff->setCardId($data->card_id);
+    $checkBluff->setPlayerId($data->player_id);
+    $checkBluff->setCardId($data->card_id);
 
     //create player
     if($checkBluff->addNewCheck()){

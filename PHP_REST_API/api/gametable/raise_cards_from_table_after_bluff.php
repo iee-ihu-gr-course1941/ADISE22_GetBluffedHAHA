@@ -1,7 +1,7 @@
 <?php
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
-    header('Access-Control-Allow-Methods: PUT');
+    header('Access-Control-Allow-Methods: POST');
     header('Access-Control-Allow-Headers: Content-Type,Access-Control-Allow-Methods,Authorization,X-Requested-With');
 
     include_once '../../config/Database.php';
@@ -19,20 +19,19 @@
 
     //$gameTable
     $gameTable->setPlayerId($data->player_id);
-    // $gameTable->setGameConditionId($data->game_condition_id);
-    $gameTable->setCardId($data->card_id);
     $gameTable->setBurned($data->burned);
     $gameTable->setOntable($data->ontable);
-    $gameTable->setBluff($data->bluff);
+    $gameTable->setPlayerId($data->player_id);
+    $gameTable->setOntable($data->bluff);
 
     //play card
-    if($gameTable->playCard()){
+    if($gameTable->raiseCardsFromTableAfterBluff()){
         echo json_encode(
-            array('message' =>'card played')
+            array('message' =>'card raised from table successfully')
         );
     }else{
         echo json_encode(
-            array('message' =>'card was not played')
+            array('message' =>'card was not raised from table')
         );
     }
 

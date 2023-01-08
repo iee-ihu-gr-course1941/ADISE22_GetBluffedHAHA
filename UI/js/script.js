@@ -89,7 +89,7 @@ var  clickPlay = function(){
           .then((data) => console.log(data));
         
         const urlToInsertOnCheckBluff =
-        "http://localhost/PHP_REST_API/api/checkbluff/add_new";
+        "http://localhost/PHP_REST_API/api/checkbluff/add_new_check";
         fetch(url,{
           method: "POST",
           headers: {
@@ -107,11 +107,58 @@ var  clickPlay = function(){
   }) 
   // jQuery(".clicked").attr('class','back_card');
 } 
-  callBluff = function(){
-    const url =
-    "http://localhost/PHP_REST_API/api/gametable/play_card";
+
+function callBluff(){
+    const url ="http://localhost/PHP_REST_API/api/gametable/get_last_played_cards.php";
+
+    fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+        data =  JSON.stringify(data.data);
+        data = JSON.parse(data);
+        flag = false;
+        data.forEach(function(cardPlayed){ 
+            if (cardPlayed.bluff==true) {
+              flag = true;
+              throw new  UserException('BreakLoop');
+            }    
+        });
+        if(flag){
+          giveCardsToTheRightPlayer(cardPlayed.player_id)
+        }else{
+          giveCardsToTheRightPlayer(currentPlayerId)
+        }
+        emptyCheckBluffTable()
+    })
+    .catch(error => console.log('error', error));
+    //κληση ενος request που θα διαγραφει τον call_bluff
   }
-  
+
+  function giveCardsToTheRightPlayer(playerId){
+      const urlToRaiseCardsFromTable = "http://localhost/PHP_REST_API/api/gametable/raise_cards_from_table_after_bluff.php"
+      fetch(urlToRaiseCardsFromTable,{
+        method: "PUT",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({player_id: playerId,
+                              burned: false,
+                              ontable: false,
+                              bluff: false }),
+      })
+  }
+
+  function emptyCheckBluffTable() {
+    const url = "http://localhost/PHP_REST_API/api/checkbluff/empty_check_bluff.php"
+    fetch(urlToRaiseCardsFromTable,{
+      method: "DELETE",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-type": "application/json",
+      }
+    })
+  }
  
 
   /*
