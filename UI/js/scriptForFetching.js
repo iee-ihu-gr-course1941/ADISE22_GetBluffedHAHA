@@ -391,7 +391,7 @@ function distributeCardsToPlayers(playerId,cardId) {
                 'Content-type':'application/json'
                 },
                 body:JSON.stringify({player_id:playerId,
-                                    game_condition_id:11,
+                                    game_condition_id:60,
                                     card_id:cardId,
                                     burned:false
                 })
