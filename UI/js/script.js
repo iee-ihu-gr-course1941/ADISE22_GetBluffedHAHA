@@ -105,7 +105,7 @@ var  clickPlay = function(){
           .then((data) => console.log(data));
     bluffFlag = false;
   }) 
-  // jQuery(".clicked").attr('class','back_card'); 
+   jQuery(".clicked").attr('class','back_card'); 
  
 } 
 
