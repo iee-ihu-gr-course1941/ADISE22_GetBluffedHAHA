@@ -324,7 +324,6 @@ function callBluff(){
       }
     })
   }
-
   //card shuffling and distribution
   function itterateThroughPlayers() {
     const urlForPlayers = 'http://localhost/PHP_REST_API/api/player/read.php';
@@ -353,7 +352,30 @@ function callBluff(){
         });
     })
     .catch(error => console.log('error', error));
+
+
+    console.log("hello!");
+    //check if button will be disabled
+    const url="http://localhost/PHP_REST_API/api/checkbluff/check_if_empty_check_bluff.php";
+    fetch(url)
+    .then((res) => res.json())    
+    .then((data) => {
+      console.log("panw");
+      console.log(data);
+      console.log("kato");
+	  if(data==null){
+      document.getElementById("callBluff").disabled = true;
+      console.log("disabled");  
+	  }
+    else{
+      console.log("NOT disabled");	
+    }
+      })
+
 }
+
+  
+
 
 function distributeCardsToPlayers(playerId,cardId) {
     fetch('http://localhost/PHP_REST_API/api/gametable/add_card.php', {

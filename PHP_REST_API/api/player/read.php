@@ -6,6 +6,7 @@ header('Access-Control-Allow-Headers: Content-Type,Access-Control-Allow-Methods,
 
 include_once '../../config/Database.php';
 include_once '../../models/Player.php';
+
 // instantiate database
  $db = new Database;
  $db = $db->connect();
@@ -15,6 +16,7 @@ include_once '../../models/Player.php';
 
  //players query
  $result = $player->read();
+
  //get row count
  $rowcount = $result->rowCount();
 
@@ -22,6 +24,7 @@ include_once '../../models/Player.php';
     $player_arr = array();
     $player_arr['data'] = array();
 
+    
     while($row =$result->fetch(PDO::FETCH_ASSOC)){
         extract($row);
 

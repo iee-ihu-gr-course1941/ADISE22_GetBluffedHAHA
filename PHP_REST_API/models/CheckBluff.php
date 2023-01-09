@@ -88,4 +88,21 @@
 
             return false;
         }
+
+        public function checkIfCheckBluffIsEmpty(){
+
+           $query = 'SELECT c.id,c.card_id,c.player_id,c.last_changed
+                   FROM ' . $this->table. ' c ';
+
+
+            //Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Execute query
+             $stmt->execute();
+             
+            return $stmt;            
+        }
+
+
     }
