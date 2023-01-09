@@ -357,6 +357,31 @@ body {
   opacity: 90%;
 }
 
+#player-2-size{
+  position: absolute;
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:40px;
+  color: rgb(134, 146, 234);
+
+  top: 10.3%;
+  left: 30%;
+
+}
+
+#player-3-size{
+  position: absolute;
+  font-family: "Consolas"; 
+  font-weight: bolder;
+  font-size:40px;
+  color: rgb(134, 146, 234);
+
+  top: 10.3%;
+  right: 19.7%;
+  
+}
+
+
 
 .pip {
   grid-row-end: span 2;

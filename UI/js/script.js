@@ -159,7 +159,25 @@ function callBluff(){
       }
     })
   }
- 
+
+  function printPlayerHandSize(player_id,document){
+    const urlToGetPlayerHand = "http://localhost/PHP_REST_API/api/gametable/get_player_hand.php?" +
+    new URLSearchParams({ player_id }).toString();
+    console.log(urlToGetPlayerHand);
+    fetch(urlToGetPlayerHand)
+      .then((res) => res.json())
+      .then((data) => {
+      data = JSON.stringify(data.data);
+      data = JSON.parse(data);
+      size = data.length;
+      document.innerHTML= size;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  
 
   /*
   jQuery(".clicked").attr('id','playedCard').css({

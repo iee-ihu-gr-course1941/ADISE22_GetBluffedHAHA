@@ -48,7 +48,13 @@
    <p id="player-2-info">CARDS IN HAND:</p>
    <p id="player-3-info">CARDS IN HAND:</p>
    <p id="burned-text">BURNED CARDS</p>
+   <p id="player-2-size">-</p>
+   <p id="player-3-size">-</p>
   <script src="../js/scriptForFetching.js" defer></script>
+  <script src="../js/script.js" defer></script>
+
+  <button onclick="printPlayerHandSize(2,document.getElementById('player-2-size'))" id="test-button1">TEST HAND SIZE 1</button>
+  <button onclick="printPlayerHandSize(4,document.getElementById('player-3-size'))" id="test-button2">TEST HAND SIZE 2</button>
 
 </div> 
 <button onclick="clickPlay()" id="play-card-button" >PLAY CARDS</button>
