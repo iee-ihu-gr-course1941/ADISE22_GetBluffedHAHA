@@ -351,7 +351,12 @@ function callBluff(){
             }else{
               window.alert("all cards were distributed to players");
             }
+
+            
+            
         });
+
+
     })
     .catch(error => console.log('error', error));
 
