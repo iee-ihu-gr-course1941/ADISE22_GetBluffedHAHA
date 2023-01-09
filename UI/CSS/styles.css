@@ -104,10 +104,10 @@ body {
 
 #cardSelector {
   position:absolute;
-  right:10%;
+  right:7%;
   bottom: 10%;
-  height: 50px;
-  width:50px;
+  height: 5%;
+  width:3%;
   border-radius: 5px;
   font-family: "Consolas"; 
   font-weight: bolder;
@@ -118,7 +118,7 @@ body {
 
 #selectorText {
   position:absolute;
-  right:5%;
+  right:2%;
   bottom: 13%;
   font-size:25px;
   color: aqua;
@@ -780,5 +780,7 @@ svg {
 #generated-cards-container{
   bottom: 0%;
   right: 25%;
+  height: 60%;
+  width: 80%;
   position: absolute;
 }
