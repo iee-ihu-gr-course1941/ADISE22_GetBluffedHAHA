@@ -41,7 +41,7 @@ $checkBluff = new CheckBluff($db);
     echo json_encode($check_bluff_arr);
  }else{
     echo json_encode(
-        array('message' => 'no table found'));
+        null);
  }
 
     
