@@ -11,7 +11,8 @@
 </head>
 <body onload="itterateThroughPlayers()">
     <button id="get-cards-button">get Cards</button> 
-    <input type="text" id="player_id" placeholder="insert player id">
+    <p id="insertPlayerID">Please insert Your ID</p>
+    <input type="text" id="player_id" placeholder="1,2,3 etc">
     <div class="back-card-stack"></div>
     <div class="back-card-burned-stack"></div>
  
@@ -19,7 +20,7 @@
     
    <button onclick="clickPlay()" id="play-card-button" >PLAY CARDS</button>
    <button onclick="clickTakeBack()" id="take-back-card">TAKE BACK CARD</button>
-   <button onclick="callBluff()" id="callBluff">CALL BLUFF</button>
+   <button onclick="callBluff()" id="callBluff">CALL BLUFF</button>   
    <button onclick="passTurn()" id="end-turn-button">PASS</button>
    <button id="quit-button"><a href="startingMenu.html" id="quit-game"></a>QUIT GAME</button>
    <p id="selectorText">WHAT CARD TO CALL:</p>

@@ -92,10 +92,10 @@ body {
   height: 50px;
   background-color: mediumslateblue;
   color: beige;
-  border-radius: 10px; 
+  border-radius: 5%; 
   font-family: "Consolas"; 
   font-weight: bolder;
-  font-size:25px;
+  font-size:150%;
   padding: 0.5em;
   cursor: pointer;
   
@@ -112,7 +112,7 @@ body {
   border-radius: 5px;
   font-family: "Consolas"; 
   font-weight: bolder;
-  font-size:25px;
+  font-size:150%;
   background-color:beige;
 
 }
@@ -258,33 +258,46 @@ body {
   width: 9%;
   height: 10%;
   margin: 0.5em;
-  border-radius: 10px; 
+  border-radius: 10%; 
   font-family: "Consolas"; 
   font-weight: bolder;
   font-size:160%;
   background-color: orange;
   cursor: pointer;
 }
-#player_id{
+#insertPlayerID{
+  position:absolute;
+  top:1%;
+  right:90%;
   width: 6%;
-  height: 200%;
+  height: 4%;
+  color:aliceblue;
+  font-family: 'Consolas';
+  font-size: 100%;
+}
+#player_id{
+  position:absolute;
+  top:8%;
+  right:90%;
+  width: 6%;
+  height: 4%;
+  border-radius: 5%;
 }
 
 #player-icon-1{
   position: absolute;
   width: -1%;
   height:10%;
-  right: 23%;
+  right: 25%;
   top: 1%;
-  
-  
 } 
+
 
 #player-icon-2{
   position: absolute;
   width: -1%;
   height:10%;
-  left:23%;
+  left:25%;
   top: 1%;
   
 } 
@@ -337,10 +350,10 @@ body {
   width: 5%;
   background-color: maroon;
   color: beige;
-  border-radius: 40px; 
+  border-radius:  40%; 
   font-family: "Consolas"; 
   font-weight: bolder;
-  font-size:25px;
+  font-size:150%;
   cursor: pointer;
 }
 
@@ -350,7 +363,7 @@ body {
   font-weight: bolder;
   font-size:180%;
   color: aqua;
-  top: 12%;
+  top: 13%;
   left: 22%;
 }
 
@@ -360,7 +373,7 @@ body {
   font-weight: bolder;
   font-size:180%;
   color: aqua;
-  top: 12%;
+  top: 13%;
   right: 22%;
 }
 

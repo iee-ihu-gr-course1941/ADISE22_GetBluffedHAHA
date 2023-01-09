@@ -356,7 +356,6 @@ function callBluff(){
     .catch(error => console.log('error', error));
 
 
-    console.log("hello!");
     //check if button will be disabled
     const url="http://localhost/PHP_REST_API/api/checkbluff/check_if_empty_check_bluff.php";
     fetch(url)
