@@ -105,7 +105,8 @@ var  clickPlay = function(){
           .then((data) => console.log(data));
     bluffFlag = false;
   }) 
-  // jQuery(".clicked").attr('class','back_card');
+  // jQuery(".clicked").attr('class','back_card'); 
+ 
 } 
 
 function callBluff(){
@@ -214,8 +215,13 @@ var endTurn = function(){
 }
 
 
+//Set timeout 
+setTimeout(timeFun,60000);
 
-
+function timeFun(){
+  alert("Perase ena lepto");
+  //console.log("perase ena lepto"); 
+}
 
 
 
