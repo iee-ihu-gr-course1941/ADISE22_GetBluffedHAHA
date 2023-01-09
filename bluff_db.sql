@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 07, 2022 at 08:16 AM
+-- Host: localhost:4333
+-- Generation Time: Jan 08, 2023 at 04:09 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -96,6 +96,19 @@ INSERT INTO `cards` (`id`, `colour`, `number`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `check_bluff`
+--
+
+CREATE TABLE `check_bluff` (
+  `id` int(11) NOT NULL,
+  `card_id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `last_changed` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `game_condition`
 --
 
@@ -106,6 +119,13 @@ CREATE TABLE `game_condition` (
   `last_change` datetime DEFAULT NULL,
   `result` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `game_condition`
+--
+
+INSERT INTO `game_condition` (`id`, `p_turn`, `status`, `last_change`, `result`) VALUES
+(11, 4, 'STARTED', '2023-01-07 14:38:53', 'pame');
 
 -- --------------------------------------------------------
 
@@ -118,8 +138,70 @@ CREATE TABLE `game_table` (
   `player_id` int(11) DEFAULT NULL,
   `game_condition_id` int(11) DEFAULT NULL,
   `card_id` int(11) DEFAULT NULL,
-  `burned` bit(1) DEFAULT NULL
+  `burned` bit(1) DEFAULT NULL,
+  `ontable` bit(1) DEFAULT NULL,
+  `bluff` bit(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `game_table`
+--
+
+INSERT INTO `game_table` (`id`, `player_id`, `game_condition_id`, `card_id`, `burned`, `ontable`, `bluff`) VALUES
+(5136, 2, 11, 20, b'0', b'0', NULL),
+(5140, 2, 11, 36, b'0', b'0', NULL),
+(5141, 2, 11, 50, b'0', b'0', NULL),
+(5142, 2, 11, 44, b'0', b'0', NULL),
+(5143, 2, 11, 11, b'0', b'0', NULL),
+(5144, 2, 11, 19, b'0', b'0', NULL),
+(5146, 2, 11, 42, b'0', b'0', NULL),
+(5147, 2, 11, 14, b'0', b'0', NULL),
+(5148, 4, 11, 49, b'0', b'0', NULL),
+(5150, 4, 11, 32, b'0', b'0', NULL),
+(5153, 4, 11, 30, b'0', b'0', NULL),
+(5154, 6, 11, 24, b'0', b'0', NULL),
+(5155, 4, 11, 25, b'0', b'0', NULL),
+(5156, 4, 11, 31, b'0', b'0', NULL),
+(5157, 2, 11, 38, b'0', b'0', NULL),
+(5158, 6, 11, 43, b'0', b'0', NULL),
+(5159, 4, 11, 45, b'0', b'0', NULL),
+(5160, 6, 11, 18, b'0', b'0', NULL),
+(5161, 6, 11, 6, b'0', b'0', NULL),
+(5162, 6, 11, 16, b'0', b'0', NULL),
+(5163, 6, 11, 47, b'0', b'0', NULL),
+(5164, 6, 11, 21, b'0', b'0', NULL),
+(5165, 2, 11, 22, b'0', b'0', NULL),
+(5166, 2, 11, 28, b'0', b'0', NULL),
+(5167, 2, 11, 12, b'0', b'0', NULL),
+(5168, 2, 11, 51, b'0', b'0', NULL),
+(5169, 2, 11, 1, b'0', b'0', NULL),
+(5170, 4, 11, 17, b'0', b'0', NULL),
+(5171, 6, 11, 37, b'0', b'0', NULL),
+(5172, 4, 11, 27, b'0', b'0', NULL),
+(5173, 4, 11, 4, b'0', b'0', NULL),
+(5174, 4, 11, 5, b'0', b'0', NULL),
+(5175, 6, 11, 8, b'0', b'0', NULL),
+(5177, 4, 11, 29, b'0', b'0', NULL),
+(5178, 4, 11, 33, b'0', b'0', NULL),
+(5179, 4, 11, 41, b'0', b'0', NULL),
+(5180, 4, 11, 10, b'0', b'0', NULL),
+(5181, 4, 11, 53, b'0', b'0', NULL),
+(5182, 2, 11, 9, b'0', b'0', NULL),
+(5183, 2, 11, 35, b'0', b'0', NULL),
+(5185, 6, 11, 23, b'0', b'0', NULL),
+(5186, 4, 11, 34, b'0', b'0', NULL),
+(5187, 6, 11, 52, b'0', b'0', NULL),
+(5188, 4, 11, 26, b'0', b'0', NULL),
+(5189, 6, 11, 7, b'0', b'0', NULL),
+(5190, 2, 11, 3, b'0', b'0', NULL),
+(5191, 6, 11, 54, b'0', b'0', NULL),
+(5192, 6, 11, 2, b'0', b'0', NULL),
+(5193, 6, 11, 39, b'0', b'0', NULL),
+(5194, 4, 11, 40, b'0', b'0', NULL),
+(5195, 2, 11, 15, b'0', b'0', NULL),
+(5196, 6, 11, 46, b'0', b'0', NULL),
+(5197, 6, 11, 13, b'0', b'0', NULL),
+(5198, 6, 11, 48, b'0', b'0', NULL);
 
 -- --------------------------------------------------------
 
@@ -130,19 +212,19 @@ CREATE TABLE `game_table` (
 CREATE TABLE `players` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp()
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `token` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `players`
 --
 
-INSERT INTO `players` (`id`, `name`, `created`) VALUES
-(1, 'alexandros allakse', '2022-12-06 11:40:16'),
-(2, 'alex', '2022-12-06 11:40:16'),
-(7, 'alex2', '2022-12-06 11:41:09'),
-(8, '', '2022-12-06 11:56:20'),
-(9, 'kal', '2022-12-06 11:56:21');
+INSERT INTO `players` (`id`, `name`, `created`, `token`) VALUES
+(1, '', '2023-01-07 11:27:14', 'd41d8cd98f00b204e9800998ecf8427e'),
+(2, 'antonis', '2023-01-07 11:27:14', '1351cd4c983681e73e4c9a8348c7e0d9'),
+(4, 'antonis2', '2023-01-07 11:29:03', '7faa4389fbef5aef5b3058cb910f1a4c'),
+(6, 'Alex', '2023-01-07 14:40:59', 'a08372b70196c21a9229cf04db6b7ceb');
 
 --
 -- Indexes for dumped tables
@@ -153,6 +235,14 @@ INSERT INTO `players` (`id`, `name`, `created`) VALUES
 --
 ALTER TABLE `cards`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `check_bluff`
+--
+ALTER TABLE `check_bluff`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `card_id` (`card_id`),
+  ADD KEY `player_id` (`player_id`);
 
 --
 -- Indexes for table `game_condition`
@@ -188,26 +278,39 @@ ALTER TABLE `cards`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
+-- AUTO_INCREMENT for table `check_bluff`
+--
+ALTER TABLE `check_bluff`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `game_condition`
 --
 ALTER TABLE `game_condition`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `game_table`
 --
 ALTER TABLE `game_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5199;
 
 --
 -- AUTO_INCREMENT for table `players`
 --
 ALTER TABLE `players`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `check_bluff`
+--
+ALTER TABLE `check_bluff`
+  ADD CONSTRAINT `check_bluff_ibfk_1` FOREIGN KEY (`card_id`) REFERENCES `cards` (`id`),
+  ADD CONSTRAINT `check_bluff_ibfk_2` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`);
 
 --
 -- Constraints for table `game_condition`
