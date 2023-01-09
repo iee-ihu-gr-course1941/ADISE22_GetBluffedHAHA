@@ -284,11 +284,12 @@ function callBluff(){
         data.forEach(function(cardPlayed){ 
             if (cardPlayed.bluff==true) {
               flag = true;
-              throw new  UserException('BreakLoop');
+              alert('break loop')
             }    
         });
         if(flag){
-          giveCardsToTheRightPlayer(cardPlayed.player_id)
+          console.log("this " +data[0].player_id)
+          giveCardsToTheRightPlayer(data[0].player_id)
         }else{
           giveCardsToTheRightPlayer(currentPlayerId)
         }

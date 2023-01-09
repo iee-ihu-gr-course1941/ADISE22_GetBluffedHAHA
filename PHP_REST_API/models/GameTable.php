@@ -94,9 +94,8 @@ include_once '../../models/Card.php';
             . ' SET 
             player_id =:player_id,
             burned =:burned,
-            ontable =:ontable,
             bluff =:bluff
-            where ontable =:ontable
+            where ontable =1
             ';
 
              //Prepare statement
@@ -105,7 +104,7 @@ include_once '../../models/Card.php';
             ///Bind Parameters
             $stmt -> bindParam(':player_id',$this->player_id);
             $stmt -> bindParam(':burned',$this->burned);
-            $stmt -> bindParam(':ontable',$this->ontable);
+            // $stmt -> bindParam(':ontable',$this->ontable);
             $stmt -> bindParam(':bluff',$this->bluff);
  
             if($stmt->execute()){

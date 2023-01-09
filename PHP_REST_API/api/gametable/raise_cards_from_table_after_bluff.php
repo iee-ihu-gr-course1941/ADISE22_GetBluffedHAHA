@@ -20,7 +20,7 @@
     //$gameTable
     $gameTable->setPlayerId($data->player_id);
     $gameTable->setBurned($data->burned);
-    $gameTable->setOntable($data->ontable);
+    // $gameTable->setOntable($data->ontable);
     $gameTable->setPlayerId($data->player_id);
     $gameTable->setOntable($data->bluff);
 
