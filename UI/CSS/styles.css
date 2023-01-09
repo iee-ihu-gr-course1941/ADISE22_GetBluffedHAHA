@@ -165,8 +165,8 @@ body {
   grid-template-rows: repeat(8, 1fr);
   align-items: center;
   position: absolute;
-  bottom:200%;
-  right:50.4%;
+  bottom:80%;
+  right:30.4%;
   
   background-image: url("../images/Card_back_05a.svg");
   background-repeat: no-repeat;
