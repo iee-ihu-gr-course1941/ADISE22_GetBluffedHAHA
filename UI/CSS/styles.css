@@ -261,7 +261,8 @@ body {
   background-color: orange;
 }
 #player_id{
-
+  width: 6%;
+  height: 200%;
 }
 
 #player-icon-1{
