@@ -2,6 +2,10 @@ document.getElementById("get-cards-button").addEventListener("click", getCards);
 setInterval(GetGameStatus, 1000);
 
 function getCards() {
+  const gameIdDiv = document.createElement("div");
+  document.body.appendChild(gameIdDiv);
+  gameIdDiv.id ="24";
+  gameIdDiv.hidden = true;
   let player_id = document.getElementById("player_id").value;
   // const url = 'https://users.iee.ihu.gr/~it185186/ADISE22_GetBluffedHAHA/PHP_REST_API/api/card/read.php';
   // const url = 'http://localhost/PHP_REST_API/api/card/read.php';
@@ -154,25 +158,50 @@ function attachHighlight() {
 //     alert("provide with name");
 //   }
 // }
-function addPlayer(e) {
-  e.preventDefault();
+var me={token:null};
+function addPlayer() {
 
-  let name = document.getElementById("playername").value;
-  if (name.length != 0 && name != "") {
-    fetch("http://localhost/PHP_REST_API/api/player/add_new_player.php", {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({ name: name }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  } else {
-    alert("provide with name");
-  }
+    if($('#username').val()=='') {
+      alert('You have to set a username');
+      return;
+    }
+    var p_color = $('#pcolor').val();
+    draw_empty_board(p_color);
+    fill_board();
+    
+    $.ajax({url: "http://localhost/PHP_REST_API/api/player/add_new_player.php", 
+        method: 'POST',
+        dataType: "json",
+        headers: {"X-Token": me.token},
+        contentType: 'application/json',
+        data: JSON.stringify( {name: "alex"}),
+        success: login_result,
+        error: login_error});
+  
+  // // e.preventDefault();
+  // let token = 1231241241241;
+  // let name = "alex123";
+  // if (name.length != 0 && name != "") {
+  //   fetch("http://localhost/PHP_REST_API/api/player/add_new_player.php", {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json, text/plain, */*",
+  //       "Content-type": "application/json",
+  //       'X-Token': token
+  //     },
+  //     body: JSON.stringify({ name: name }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // } else {
+  //   alert("provide with name");
+  // }
 }
+
+// function login_result(data) {
+// 	me = data[0];
+// }
+
 
 //PLAY CARDS
 var  clickPlay = function(){
@@ -208,6 +237,7 @@ var  clickPlay = function(){
             .then((data) => console.log(data));
             console.log("current card id"+cardToPlay.id);
           insertOnCheckBluff(cardToPlay.id)
+
           // const urlToInsertOnCheckBluff =
           // "http://localhost/PHP_REST_API/api/checkbluff/add_new_check.php";
           // fetch(urlToInsertOnCheckBluff,{
@@ -224,6 +254,8 @@ var  clickPlay = function(){
           //   .then((data) => console.log(data));
       bluffFlag = false;
   }) 
+  // location.reload();
+  // getCards();
   // jQuery(".clicked").attr('class','back_card');
 }
 

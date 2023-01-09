@@ -150,4 +150,38 @@
   
             return false;
          }
+
+         //CHANGE GAME STATUS
+         public function updatePlayerTurn(){
+            // Create query
+            $query = 'UPDATE ' . $this->table . '
+                                set p_turn = :p_turn,
+                                  last_change = now()
+                                  WHERE id = :id';
+            
+             
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+            
+            //clean data
+            $this->id = htmlspecialchars(strip_tags($this->id));
+            $this->p_turn= htmlspecialchars(strip_tags($this->p_turn));
+            $this->status= htmlspecialchars(strip_tags($this->status));
+            $this->last_change = htmlspecialchars(strip_tags($this->last_change));
+            $this->result = htmlspecialchars(strip_tags($this->result));
+
+            //Bind params
+            $stmt -> bindParam(':id',$this->id);
+            $stmt -> bindParam(':p_turn',$this->p_turn);
+  
+            // Execute query
+            if($stmt->execute()) {
+              return true;
+            }
+  
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+  
+            return false;
+         }
     }
