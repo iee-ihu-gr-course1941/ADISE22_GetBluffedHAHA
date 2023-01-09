@@ -97,6 +97,7 @@ body {
   font-weight: bolder;
   font-size:25px;
   padding: 0.5em;
+  cursor: pointer;
   
   
   
@@ -219,6 +220,7 @@ body {
   font-weight: bolder;
   font-size:160%;
   background-color: beige;
+  cursor: pointer;
 }
 #take-back-card{
   position:absolute;
@@ -232,6 +234,7 @@ body {
   font-weight: bolder;
   font-size:160%;
   background-color: beige;
+  cursor: pointer;
   
 }
 #end-turn-button{
@@ -246,6 +249,7 @@ body {
   font-weight: bolder;
   font-size:160%;
   background-color: orange;
+  cursor: pointer;
 }
 #get-cards-button{
   position:absolute;
@@ -259,6 +263,7 @@ body {
   font-weight: bolder;
   font-size:160%;
   background-color: orange;
+  cursor: pointer;
 }
 #player_id{
   width: 6%;
@@ -322,6 +327,7 @@ body {
   width: 90%;
   height:80%;
   border-radius: 40px; 
+  cursor: pointer;
 }
 #quit-button{
   position:absolute;
@@ -335,6 +341,7 @@ body {
   font-family: "Consolas"; 
   font-weight: bolder;
   font-size:25px;
+  cursor: pointer;
 }
 
 #player-2-info{
