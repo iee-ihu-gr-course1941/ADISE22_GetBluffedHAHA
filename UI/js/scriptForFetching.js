@@ -35,9 +35,9 @@ function getCards() {
             } else {
               node.setAttribute("data-suit", "club");
             }
-            document.body.appendChild(node);
-            // const box = document.getElementById("output");
-            // box.appendChild(node);
+            // document.body.appendChild(node);
+            const box = document.getElementById("generated-cards-container");
+            box.appendChild(node);
           } else {
             card.colour = card.colour.toLowerCase();
             const node = document.createElement("div");
@@ -50,18 +50,18 @@ function getCards() {
             } else {
               node.setAttribute("data-suit", "club");
             }
-            document.body.appendChild(node);
-            // const box = document.getElementById("output");
-            // box.appendChild(node);
+            // document.body.appendChild(node);
+            const box = document.getElementById("generated-cards-container");
+            box.appendChild(node);
           }
         } else {
           const node = document.createElement("div");
           node.setAttribute("id", card.id);
           node.setAttribute("class", "card");
           node.setAttribute("data-value", "Joker");
-          document.body.appendChild(node);
-          // const box = document.getElementById("output");
-          // box.appendChild(node);
+          // document.body.appendChild(node);
+          const box = document.getElementById("generated-cards-container");
+            box.appendChild(node);
         }
       });
       console.log(document.body.childNodes);
@@ -76,6 +76,7 @@ function getCards() {
 
 function addStyles() {
   const cards = document.querySelectorAll(".card");
+  console.log(cards);
   cards.forEach(addCardElements);
 }
 

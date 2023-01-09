@@ -764,3 +764,9 @@ svg {
   grid-column-start: 2;
   transform: rotate(180deg);
 }
+
+#generated-cards-container{
+  bottom: 0%;
+  right: 25%;
+  position: absolute;
+}
