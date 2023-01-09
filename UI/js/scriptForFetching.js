@@ -257,7 +257,7 @@ var  clickPlay = function(){
   }) 
   // location.reload();
   // getCards();
-  // jQuery(".clicked").attr('class','back_card');
+  jQuery(".clicked").attr('class','back_card');
 }
 
 function getCurrentPlayerId(){
